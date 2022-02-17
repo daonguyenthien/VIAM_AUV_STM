@@ -34,7 +34,7 @@ uint8_t _can_respond_count = 0;
 
 /*---------------------------------Timing-------------------------------------*/
 
-static struct
+struct
 {
 	bool CAN_StartComm;
 	bool Control_Open_Loop;
@@ -680,6 +680,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 					TIM_Cmd(TIM4,ENABLE);
 					UHALL_ReadPosition(Motor_CW);
 					UPWM_SetBytesDutyCycle(RxMessage.Data[6], RxMessage.Data[5], RxMessage.Data[4], RxMessage.Data[3]);
+					Flag.Control_Open_Loop = false;
 				}
 			}
 			if((RxMessage.Data[0] == 'O')&&(RxMessage.Data[1] == 'L')&&(RxMessage.Data[2] == 'L'))
@@ -695,6 +696,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 					TIM_Cmd(TIM4,ENABLE);
 					UHALL_ReadPosition(Motor_CCW);
 					UPWM_SetBytesDutyCycle(RxMessage.Data[6], RxMessage.Data[5], RxMessage.Data[4], RxMessage.Data[3]);
+					Flag.Control_Open_Loop = false;
 				}
 			}
 	

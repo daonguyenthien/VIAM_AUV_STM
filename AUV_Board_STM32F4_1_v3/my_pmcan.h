@@ -48,6 +48,8 @@ extern float Mass_Actual_Position;
 void UPMCAN_Configure(void);
 void UPMCAN_Initialize_Position(void);
 void UPMCAN_Send_Position_Data(void);
+
+void UPMCAN_Test_Pistol(void);
 //-------Function For Mass Shifter-------//
 void UPMCAN_Mass_Start(UPMCAN_ENABLE_DRIVER_TypeDef _state);
 void UPMCAN_Mass_SetOLoop_Duty(float _duty, UPMCAN_Direction_of_Motor_TypeDef _direction);
@@ -60,7 +62,7 @@ void UPMCAN_Mass_SetFuzzy_Ge(float _ge);
 void UPMCAN_Mass_SetFuzzy_Gde(float _gde);
 void UPMCAN_Mass_SetFuzzy_Gdu(float _gdu);
 void UPMCAN_Mass_GetStatus(Motor_StatusTypeDef _motor_status);
-void UPMCAN_Mass_Position(float pos);
+void UPMCAN_Mass_Position(float position);
 
 //-------Function For Pistol-------//
 void UPMCAN_Pistol_Start(UPMCAN_ENABLE_DRIVER_TypeDef _state);

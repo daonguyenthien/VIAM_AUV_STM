@@ -140,17 +140,17 @@ int main(void)
 		if(check)
 		{
 			UCAN_test_thruster();
-			UDELAY_ms(10);
+			UDELAY_ms(50);
 			UCAN_test_rudder();
-			UDELAY_ms(10);
+			UDELAY_ms(50);
 			UCAN_test_mass();
-			UDELAY_ms(10);
+			UDELAY_ms(50);
 			UCAN_test_pistol();
-			UDELAY_ms(10);
+			UDELAY_ms(50);
 			UCAN_test_altimeter();
-			UDELAY_ms(10);
+			UDELAY_ms(50);
 			UCAN_test_leak();
-			UDELAY_ms(10);
+			UDELAY_ms(50);
 			
 			check = false;
 		}

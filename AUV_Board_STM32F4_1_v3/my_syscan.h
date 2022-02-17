@@ -147,5 +147,6 @@ void USYSCAN_Send_Data(void);
 void USYSCAN_OpenThruster(void);
 void USYSCAN_Send_test(void);
 void USYSCAN_Test(void);
+void Run_Thruster(float speed_percent);
 
 #endif /* USER_CAN_H_ */

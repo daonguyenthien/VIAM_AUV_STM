@@ -32,7 +32,7 @@
 			#define		UKELLER_USART_AF						GPIO_AF_USART3
 			#define 	UKELLER_USART_IRQn					USART3_IRQn
 			#define 	UKELLER_USART_IRQPreemptionPriority		0x00
-			#define 	UKELLER_USART_IRQSubPriority					0x02
+			#define 	UKELLER_USART_IRQSubPriority					0x03
 			
 			#define   UKELLER_DMA_Channel					DMA_Channel_4
 			#define   UKELLER_DMA_Stream					DMA1_Stream1
@@ -40,7 +40,7 @@
 			#define 	UKELLER_DMA_CLK							RCC_AHB1Periph_DMA1
 			#define		UKELLER_DMA_Stream_IRQn			DMA1_Stream1_IRQn
 			#define 	UKELLER_DMA_IRQPreemptionPriority		0x00
-			#define 	UKELLER_DMA_IRQSubPriority					0x01
+			#define 	UKELLER_DMA_IRQSubPriority					0x02
 			
 			#define		UKELLER_DMA_Stream_IRQHandler			DMA1_Stream1_IRQHandler
 			#define		UKELLER_USART_IRQHandler					USART3_IRQHandler

@@ -55,6 +55,7 @@ static bool _system_ready = false;
 static bool _need_system_ready = false;
 uint8_t _can_respond_count = 0;
 uint8_t _syscan_count = 0;
+uint8_t _send_status = 0;
 
 float UPWM_DutyCycle_Pistol;
 float UPWM_DutyCycle_Mass;
@@ -266,20 +267,6 @@ void USYSCAN_SystemReady(void)
 	USYSCAN_Transmit(_IDCANBUS_EPC, 8, USYSCAN_TxMsgArr);
 }
 
-void USYSCAN_Test(void)
-{
-	USYSCAN_TxMsgArr[0] = 'O';
-	USYSCAN_TxMsgArr[1] = 'L';
-	USYSCAN_TxMsgArr[2] = 'M';
-	USYSCAN_TxMsgArr[3] = 0;
-	USYSCAN_TxMsgArr[4] = 0;
-	USYSCAN_TxMsgArr[5] = 0;
-	USYSCAN_TxMsgArr[6] = 0;
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-	
-	USYSCAN_Transmit(_IDCANBUS_EPC, 8, USYSCAN_TxMsgArr);
-}
-
 void USYSCAN_OpenThruster(void)
 {
 	USYSCAN_TxMsgArr[0] = 'C';
@@ -292,20 +279,6 @@ void USYSCAN_OpenThruster(void)
 	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
 	
 	USYSCAN_Transmit(_IDCANBUS_THRUSTER, 8, USYSCAN_TxMsgArr);
-}
-
-void USYSCAN_SystemReady_2(void)
-{
-	USYSCAN_TxMsgArr[0] = 'A';
-	USYSCAN_TxMsgArr[1] = 'R';
-	USYSCAN_TxMsgArr[2] = 'M';
-	USYSCAN_TxMsgArr[3] = '2';
-	USYSCAN_TxMsgArr[4] = 'C';
-	USYSCAN_TxMsgArr[5] = 'H';
-	USYSCAN_TxMsgArr[6] = 'E';
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-	
-	USYSCAN_Transmit(_IDCANBUS_ARM_2, 8, USYSCAN_TxMsgArr);
 }
 
 void USYSCAN_SystemNotReady(void)
@@ -324,57 +297,56 @@ void USYSCAN_SystemNotReady(void)
 
 void USYSCAN_Send_Data(void)
 {
-	//Send Leak Position
-	USYSCAN_TxMsgArr[0] = LEAK_POSITION_1;
-	USYSCAN_TxMsgArr[1] = LEAK_POSITION_2;
-	USYSCAN_TxMsgArr[2] = LEAK_POSITION_3;
-	USYSCAN_TxMsgArr[3] = LEAK_POSITION_4;
-	USYSCAN_TxMsgArr[4] = LEAK_POSITION_5;
-	USYSCAN_TxMsgArr[5] = 0;
-	USYSCAN_TxMsgArr[6] = 0;
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-
-	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+	switch(_send_status)
+	{
+		case 0:
+			//Send Leak Position
+			USYSCAN_TxMsgArr[0] = LEAK_POSITION_1;
+			USYSCAN_TxMsgArr[1] = LEAK_POSITION_2;
+			USYSCAN_TxMsgArr[2] = LEAK_POSITION_3;
+			USYSCAN_TxMsgArr[3] = LEAK_POSITION_4;
+			USYSCAN_TxMsgArr[4] = LEAK_POSITION_5;
+			USYSCAN_TxMsgArr[5] = 0;
+			USYSCAN_TxMsgArr[6] = 0;
+			USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
+			USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+			_send_status ++;
+		break;
 	
-	//Send Mass Position
-	USYSCAN_TxMsgArr[0] = 'P';
-	USYSCAN_TxMsgArr[1] = 'M';
-	USYSCAN_TxMsgArr[2] = 0;
-	USYSCAN_Convert_Float_to_Bytes(Mass_Actual_Position, &USYSCAN_TxMsgArr[3]);
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-
-	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+		case 1:
+			//Send Mass Position
+			USYSCAN_TxMsgArr[0] = 'P';
+			USYSCAN_TxMsgArr[1] = 'M';
+			USYSCAN_TxMsgArr[2] = 0;
+			USYSCAN_Convert_Float_to_Bytes(Mass_Actual_Position, &USYSCAN_TxMsgArr[3]);
+			USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
+			USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+			_send_status ++;
+		break;	
 	
-	//Send Pistol Position
-	USYSCAN_TxMsgArr[0] = 'P';
-	USYSCAN_TxMsgArr[1] = 'P';
-	USYSCAN_TxMsgArr[2] = 0;
-	USYSCAN_Convert_Float_to_Bytes(Pistol_Actual_Position, &USYSCAN_TxMsgArr[3]);
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-
-	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+		case 2:
+			//Send Pistol Position
+			USYSCAN_TxMsgArr[0] = 'P';
+			USYSCAN_TxMsgArr[1] = 'P';
+			USYSCAN_TxMsgArr[2] = 0;
+			USYSCAN_Convert_Float_to_Bytes(Pistol_Actual_Position, &USYSCAN_TxMsgArr[3]);
+			USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
+			USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+			_send_status ++;
+		break;
 	
-	//Send Altimeter range in meters
-	USYSCAN_TxMsgArr[0] = 'R';
-	USYSCAN_TxMsgArr[1] = 'A';
-	USYSCAN_TxMsgArr[2] = 'M';
-	USYSCAN_Convert_Float_to_Bytes(UALTI_in_metres.Value, &USYSCAN_TxMsgArr[3]);
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-
-	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+		case 3:
+			//Send Altimeter range in meters
+			USYSCAN_TxMsgArr[0] = 'R';
+			USYSCAN_TxMsgArr[1] = 'A';
+			USYSCAN_TxMsgArr[2] = 'M';
+			USYSCAN_Convert_Float_to_Bytes(UALTI_in_metres.Value, &USYSCAN_TxMsgArr[3]);
+			USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
+			USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
+			_send_status = 0;
+		break;
+	}
 }
-
-//void USYSCAN_Send_test(void)
-//{
-//	i++;
-//	USYSCAN_TxMsgArr[0] = 0;
-//	USYSCAN_TxMsgArr[1] = 0;
-//	USYSCAN_TxMsgArr[2] = 0;
-//	USYSCAN_Convert_Float_to_Bytes(i, &USYSCAN_TxMsgArr[3]);
-//	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-
-//	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-//}
 
 bool USYSCAN_IsSystemReady(void)
 {
@@ -389,95 +361,6 @@ void USYSCAN_PassSystemReady(FunctionalState NewState)
 bool USYSCAN_IsNeedCheckSystem(void)
 {
 	return _need_system_ready;
-}
-
-void USYSCAN_Respond_ALLData(CAN_DataTypeDef *_can_data)
-{
-//	USYSCAN_TxMsgArr[0] = ARM1_MASS_SHIFTER;
-//	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-//	USYSCAN_TxMsgArr[2] = M_ENCODER;
-//	USYSCAN_Convert_Float_to_Bytes(_can_data->Mass_Status.Encoder, &USYSCAN_TxMsgArr[3]);
-//	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-//	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-//	UDELAY_us(200);
-//	
-//	USYSCAN_TxMsgArr[0] = ARM1_MASS_SHIFTER;
-//	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-//	USYSCAN_TxMsgArr[2] = M_LS;
-//	USYSCAN_Convert_Float_to_Bytes(_can_data->Mass_Status.LimitSwitch, &USYSCAN_TxMsgArr[3]);
-//	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-//	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-//	UDELAY_us(200);
-//	
-//	USYSCAN_TxMsgArr[0] = ARM1_PISTOL;
-//	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-//	USYSCAN_TxMsgArr[2] = P_ENCODER;
-//	USYSCAN_Convert_Float_to_Bytes(_can_data->Pistol_Status.Encoder, &USYSCAN_TxMsgArr[3]);
-//	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-//	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-//	UDELAY_us(200);
-//	
-//	USYSCAN_TxMsgArr[0] = ARM1_PISTOL;
-//	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-//	USYSCAN_TxMsgArr[2] = P_LS;
-//	USYSCAN_Convert_Float_to_Bytes(_can_data->Pistol_Status.LimitSwitch, &USYSCAN_TxMsgArr[3]);
-//	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-//	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-//	UDELAY_us(200);
-//	
-	//--------ALTIMETER--------//
-	USYSCAN_TxMsgArr[0] = ARM1_ALTIMETER;
-	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-	USYSCAN_TxMsgArr[2] = ALTIMETER_METRES;
-	USYSCAN_Convert_Float_to_Bytes(_can_data->ALTI_Status.ALTI_in_metres, &USYSCAN_TxMsgArr[3]);
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-	UDELAY_us(200);
-	
-	USYSCAN_TxMsgArr[0] = ARM1_ALTIMETER;
-	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-	USYSCAN_TxMsgArr[2] = ALTIMETER_FATHOMS;
-	USYSCAN_Convert_Float_to_Bytes(_can_data->ALTI_Status.ALTI_in_fathoms, &USYSCAN_TxMsgArr[3]);
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-	UDELAY_us(200);
-	
-	USYSCAN_TxMsgArr[0] = ARM1_ALTIMETER;
-	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-	USYSCAN_TxMsgArr[2] = ALTIMETER_FEET;
-	USYSCAN_Convert_Float_to_Bytes(_can_data->ALTI_Status.ALTI_in_feet, &USYSCAN_TxMsgArr[3]);
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-	UDELAY_us(200);
-	
-//	//--------LEAK SENSORS--------//
-//	USYSCAN_TxMsgArr[0] = ARM1_LEAK_SENSOR;
-//	USYSCAN_TxMsgArr[1] = STATUS_DATA;
-//	USYSCAN_TxMsgArr[2] = LEAK_POSITION;
-//	USYSCAN_Convert_Float_to_Bytes(_can_data->Leak_Status, &USYSCAN_TxMsgArr[3]);
-//	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);	
-//	USYSCAN_Transmit(_IDCANBUS_ARM_1, 8, USYSCAN_TxMsgArr);
-			
-	//--------ACK--------//
-	USYSCAN_TxMsgArr[0] = 'R';
-	USYSCAN_TxMsgArr[1] = 'E';
-	USYSCAN_TxMsgArr[2] = 'Q';
-	USYSCAN_TxMsgArr[3] = 'A';
-	USYSCAN_TxMsgArr[4] = 'C';
-	USYSCAN_TxMsgArr[5] = 'K';
-	USYSCAN_TxMsgArr[6] = 0x00;
-	USYSCAN_TxMsgArr[7] = USYSCAN_Checksum(USYSCAN_TxMsgArr);
-	USYSCAN_Transmit(_IDCANBUS_ARM_1,8,USYSCAN_TxMsgArr);
-}
-
-bool USYSCAN_NeedRespondData(void)
-{
-	if(_can_respond_count >= num_frames_revc4req)
-	{
-		_need_respond_data = true;
-		_can_respond_count = 0;
-	}
-	return _need_respond_data;
 }
 
 void USYSCAN_AllowRespondCheckSystem(FunctionalState NewState)
@@ -553,68 +436,5 @@ void USYSCAN_CAN_IRQHandler(void)
 			{
 					Flag.End_Frame_Jetson = true;
 			}
-//			_syscan_count ++;
-//			if(_syscan_count == 10)
-//			{
-//				UIO_LEDORANGE_TOGGLE();
-//				_syscan_count = 0;
-//			}
-			
-//			UPWM_DutyCycle.byte.a1 = USYSCAN_RxMessage.Data[6];
-//			UPWM_DutyCycle.byte.a2 = USYSCAN_RxMessage.Data[5];
-//			UPWM_DutyCycle.byte.a3 = USYSCAN_RxMessage.Data[4];
-//			UPWM_DutyCycle.byte.a4 = USYSCAN_RxMessage.Data[3];
-//		if((USYSCAN_RxMessage.Data[0] == 'O')&&(USYSCAN_RxMessage.Data[1] == 'L')&&(USYSCAN_RxMessage.Data[2] == 'R')&&(UPWM_DutyCycle.Value==50))
-//		{			
-//				UIO_LEDORANGE_ON();
-//				UDELAY_ms(1000);
-//				UIO_LEDORANGE_OFF();
-//		}
-		
-//		if((USYSCAN_RxMessage.Data[0] == 'A') && (USYSCAN_RxMessage.Data[1] == 'R') 
-//				&& (USYSCAN_RxMessage.Data[2] == 'M') && (USYSCAN_RxMessage.Data[3] == '1')
-//				&& (USYSCAN_RxMessage.Data[4] == 'C') && (USYSCAN_RxMessage.Data[5] == 'H')
-//				&& (USYSCAN_RxMessage.Data[6] == 'E'))
-//		{
-//			_need_system_ready = true;
-//		}
-//		switch(USYSCAN_RxMessage.Data[1])
-//		{
-//			case READ_DATA:
-//			{
-//				if((USYSCAN_RxMessage.Data[0] == ARM1_ALL_DATA) && (USYSCAN_RxMessage.Data[6] == 0x0A))
-//				{
-//					_can_respond_count++;
-//				}
-//				break;
-//			}
-//			case WRITE_DATA:
-//			{
-//				if(RxMessage.Data[0] == ARM1_POWER_INT)
-//				{
-//					switch(RxMessage.Data[2])
-//					{
-//						case INT_24V40AH:
-//							UIO_Emergency24V40Ah(ENABLE);
-//							break;
-//						case INT_24V10AH:
-//							UIO_Emergency24V10Ah(ENABLE);
-//							break;
-//						default:
-//							break;						
-//					}
-//				}
-//				else if(RxMessage.Data[0] == ARM1_LIGHT)
-//				{
-//					if(RxMessage.Data[2] == LIGHT_ENABLE)
-//					{
-//						(RxMessage.Data[2] == 0x01)? UIO_Light_Cmd(ENABLE): UIO_Light_Cmd(DISABLE);
-//					}
-//				}
-//				break;
-//			}
-//			default:
-//				break;
-//		}
 	}
 }

@@ -162,21 +162,15 @@ Section Cross References
     my_syscan.o(i.USYSCAN_Configure) refers to my_syscan.o(.data) for _IDCANBUS_ARM_1
     my_syscan.o(i.USYSCAN_IsNeedCheckSystem) refers to my_syscan.o(.data) for _need_system_ready
     my_syscan.o(i.USYSCAN_IsSystemReady) refers to my_syscan.o(.data) for _system_ready
-    my_syscan.o(i.USYSCAN_NeedRespondData) refers to my_syscan.o(.data) for _can_respond_count
     my_syscan.o(i.USYSCAN_OpenThruster) refers to my_syscan.o(i.USYSCAN_Checksum) for USYSCAN_Checksum
     my_syscan.o(i.USYSCAN_OpenThruster) refers to my_syscan.o(i.USYSCAN_Transmit) for USYSCAN_Transmit
     my_syscan.o(i.USYSCAN_OpenThruster) refers to my_syscan.o(.data) for USYSCAN_TxMsgArr
     my_syscan.o(i.USYSCAN_PassSystemReady) refers to my_syscan.o(.data) for _system_ready
-    my_syscan.o(i.USYSCAN_Respond_ALLData) refers to my_syscan.o(i.USYSCAN_Convert_Float_to_Bytes) for USYSCAN_Convert_Float_to_Bytes
-    my_syscan.o(i.USYSCAN_Respond_ALLData) refers to my_syscan.o(i.USYSCAN_Checksum) for USYSCAN_Checksum
-    my_syscan.o(i.USYSCAN_Respond_ALLData) refers to my_syscan.o(i.USYSCAN_Transmit) for USYSCAN_Transmit
-    my_syscan.o(i.USYSCAN_Respond_ALLData) refers to my_delay.o(i.UDELAY_us) for UDELAY_us
-    my_syscan.o(i.USYSCAN_Respond_ALLData) refers to my_syscan.o(.data) for USYSCAN_TxMsgArr
     my_syscan.o(i.USYSCAN_Send_Data) refers to my_syscan.o(i.USYSCAN_Checksum) for USYSCAN_Checksum
     my_syscan.o(i.USYSCAN_Send_Data) refers to my_syscan.o(i.USYSCAN_Transmit) for USYSCAN_Transmit
     my_syscan.o(i.USYSCAN_Send_Data) refers to my_syscan.o(i.USYSCAN_Convert_Float_to_Bytes) for USYSCAN_Convert_Float_to_Bytes
+    my_syscan.o(i.USYSCAN_Send_Data) refers to my_syscan.o(.data) for _send_status
     my_syscan.o(i.USYSCAN_Send_Data) refers to my_io.o(.data) for LEAK_POSITION_1
-    my_syscan.o(i.USYSCAN_Send_Data) refers to my_syscan.o(.data) for USYSCAN_TxMsgArr
     my_syscan.o(i.USYSCAN_Send_Data) refers to my_pmcan.o(.data) for Mass_Actual_Position
     my_syscan.o(i.USYSCAN_Send_Data) refers to my_altimeter.o(.data) for UALTI_in_metres
     my_syscan.o(i.USYSCAN_SystemNotReady) refers to my_syscan.o(i.USYSCAN_Checksum) for USYSCAN_Checksum
@@ -185,12 +179,6 @@ Section Cross References
     my_syscan.o(i.USYSCAN_SystemReady) refers to my_syscan.o(i.USYSCAN_Checksum) for USYSCAN_Checksum
     my_syscan.o(i.USYSCAN_SystemReady) refers to my_syscan.o(i.USYSCAN_Transmit) for USYSCAN_Transmit
     my_syscan.o(i.USYSCAN_SystemReady) refers to my_syscan.o(.data) for USYSCAN_TxMsgArr
-    my_syscan.o(i.USYSCAN_SystemReady_2) refers to my_syscan.o(i.USYSCAN_Checksum) for USYSCAN_Checksum
-    my_syscan.o(i.USYSCAN_SystemReady_2) refers to my_syscan.o(i.USYSCAN_Transmit) for USYSCAN_Transmit
-    my_syscan.o(i.USYSCAN_SystemReady_2) refers to my_syscan.o(.data) for USYSCAN_TxMsgArr
-    my_syscan.o(i.USYSCAN_Test) refers to my_syscan.o(i.USYSCAN_Checksum) for USYSCAN_Checksum
-    my_syscan.o(i.USYSCAN_Test) refers to my_syscan.o(i.USYSCAN_Transmit) for USYSCAN_Transmit
-    my_syscan.o(i.USYSCAN_Test) refers to my_syscan.o(.data) for USYSCAN_TxMsgArr
     my_syscan.o(i.USYSCAN_Transmit) refers to stm32f4xx_can.o(i.CAN_Transmit) for CAN_Transmit
     my_syscan.o(i.USYSCAN_Transmit) refers to stm32f4xx_can.o(i.CAN_TransmitStatus) for CAN_TransmitStatus
     my_pmcan.o(i.CAN2_RX1_IRQHandler) refers to stm32f4xx_can.o(i.CAN_Receive) for CAN_Receive
@@ -220,7 +208,6 @@ Section Cross References
     my_pmcan.o(i.UPMCAN_Initialize_Position) refers to my_pmcan.o(i.UPMCAN_Mass_SetOLoop_Duty) for UPMCAN_Mass_SetOLoop_Duty
     my_pmcan.o(i.UPMCAN_Initialize_Position) refers to my_delay.o(i.UDELAY_ms) for UDELAY_ms
     my_pmcan.o(i.UPMCAN_Initialize_Position) refers to my_pmcan.o(i.UPMCAN_Pistol_SetOLoop_Duty) for UPMCAN_Pistol_SetOLoop_Duty
-    my_pmcan.o(i.UPMCAN_Initialize_Position) refers to my_syscan.o(i.USYSCAN_SystemReady) for USYSCAN_SystemReady
     my_pmcan.o(i.UPMCAN_Initialize_Position) refers to my_syscan.o(i.USYSCAN_OpenThruster) for USYSCAN_OpenThruster
     my_pmcan.o(i.UPMCAN_Initialize_Position) refers to stm32f4xx_tim.o(i.TIM_ITConfig) for TIM_ITConfig
     my_pmcan.o(i.UPMCAN_Initialize_Position) refers to my_pmcan.o(.data) for Mass_Actual_Position
@@ -228,6 +215,10 @@ Section Cross References
     my_pmcan.o(i.UPMCAN_Mass_GetStatus) refers to my_pmcan.o(i.UPMCAN_Checksum) for UPMCAN_Checksum
     my_pmcan.o(i.UPMCAN_Mass_GetStatus) refers to my_pmcan.o(i.UPMCAN_Transmit) for UPMCAN_Transmit
     my_pmcan.o(i.UPMCAN_Mass_GetStatus) refers to my_pmcan.o(.data) for UPMCAN_TxMsgArr
+    my_pmcan.o(i.UPMCAN_Mass_Position) refers to my_pmcan.o(i.UPMCAN_Convert_Float_to_Bytes) for UPMCAN_Convert_Float_to_Bytes
+    my_pmcan.o(i.UPMCAN_Mass_Position) refers to my_pmcan.o(i.UPMCAN_Checksum) for UPMCAN_Checksum
+    my_pmcan.o(i.UPMCAN_Mass_Position) refers to my_pmcan.o(i.UPMCAN_Transmit) for UPMCAN_Transmit
+    my_pmcan.o(i.UPMCAN_Mass_Position) refers to my_pmcan.o(.data) for UPMCAN_TxMsgArr
     my_pmcan.o(i.UPMCAN_Mass_SetFuzzy_DesSpeed) refers to my_pmcan.o(i.UPMCAN_Convert_Float_to_Bytes) for UPMCAN_Convert_Float_to_Bytes
     my_pmcan.o(i.UPMCAN_Mass_SetFuzzy_DesSpeed) refers to my_pmcan.o(i.UPMCAN_Checksum) for UPMCAN_Checksum
     my_pmcan.o(i.UPMCAN_Mass_SetFuzzy_DesSpeed) refers to my_pmcan.o(i.UPMCAN_Transmit) for UPMCAN_Transmit
@@ -324,6 +315,9 @@ Section Cross References
     my_pmcan.o(i.UPMCAN_RunMotor) refers to my_syscan.o(.bss) for Flag
     my_pmcan.o(i.UPMCAN_RunMotor) refers to my_pmcan.o(.data) for Mass_Actual_Position
     my_pmcan.o(i.UPMCAN_RunMotor) refers to my_syscan.o(.data) for UPWM_Position_Mass
+    my_pmcan.o(i.UPMCAN_Test_Pistol) refers to my_pmcan.o(i.UPMCAN_Pistol_SetOLoop_Duty) for UPMCAN_Pistol_SetOLoop_Duty
+    my_pmcan.o(i.UPMCAN_Test_Pistol) refers to stm32f4xx_gpio.o(i.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
+    my_pmcan.o(i.UPMCAN_Test_Pistol) refers to my_delay.o(i.UDELAY_ms) for UDELAY_ms
     my_pmcan.o(i.UPMCAN_Transmit) refers to stm32f4xx_can.o(i.CAN_Transmit) for CAN_Transmit
     my_pmcan.o(i.UPMCAN_Transmit) refers to stm32f4xx_can.o(i.CAN_TransmitStatus) for CAN_TransmitStatus
     my_leddriver.o(i.ULEDDRIVER_Config) refers to stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd) for RCC_AHB1PeriphClockCmd
@@ -547,16 +541,14 @@ Removing Unused input sections from the image.
     Removing my_syscan.o(i.USYSCAN_AllowRespondData), (20 bytes).
     Removing my_syscan.o(i.USYSCAN_IsNeedCheckSystem), (12 bytes).
     Removing my_syscan.o(i.USYSCAN_IsSystemReady), (12 bytes).
-    Removing my_syscan.o(i.USYSCAN_NeedRespondData), (36 bytes).
     Removing my_syscan.o(i.USYSCAN_PassSystemReady), (20 bytes).
-    Removing my_syscan.o(i.USYSCAN_Respond_ALLData), (236 bytes).
     Removing my_syscan.o(i.USYSCAN_SystemNotReady), (64 bytes).
-    Removing my_syscan.o(i.USYSCAN_SystemReady_2), (64 bytes).
-    Removing my_syscan.o(i.USYSCAN_Test), (60 bytes).
+    Removing my_syscan.o(i.USYSCAN_SystemReady), (60 bytes).
     Removing my_pmcan.o(.rev16_text), (4 bytes).
     Removing my_pmcan.o(.revsh_text), (4 bytes).
     Removing my_pmcan.o(.rrx_text), (6 bytes).
     Removing my_pmcan.o(i.UPMCAN_Mass_GetStatus), (64 bytes).
+    Removing my_pmcan.o(i.UPMCAN_Mass_Position), (68 bytes).
     Removing my_pmcan.o(i.UPMCAN_Mass_SetFuzzy_DesSpeed), (72 bytes).
     Removing my_pmcan.o(i.UPMCAN_Mass_SetFuzzy_Gde), (72 bytes).
     Removing my_pmcan.o(i.UPMCAN_Mass_SetFuzzy_Gdu), (72 bytes).
@@ -576,6 +568,7 @@ Removing Unused input sections from the image.
     Removing my_pmcan.o(i.UPMCAN_Pistol_SetPID_Kd), (72 bytes).
     Removing my_pmcan.o(i.UPMCAN_Pistol_SetPID_Ki), (72 bytes).
     Removing my_pmcan.o(i.UPMCAN_Pistol_SetPID_Kp), (72 bytes).
+    Removing my_pmcan.o(i.UPMCAN_Test_Pistol), (140 bytes).
     Removing my_leddriver.o(.rev16_text), (4 bytes).
     Removing my_leddriver.o(.revsh_text), (4 bytes).
     Removing my_leddriver.o(.rrx_text), (6 bytes).
@@ -947,7 +940,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f4xx.o(.revsh_text), (4 bytes).
     Removing system_stm32f4xx.o(.rrx_text), (6 bytes).
 
-440 unused section(s) (total 16046 bytes) removed from the image.
+439 unused section(s) (total 15918 bytes) removed from the image.
 
 ==============================================================================
 
@@ -957,21 +950,21 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
@@ -979,8 +972,8 @@ Image Symbol Table
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
-    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltui.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     CMSIS\\stm32f4xx_it.c                    0x00000000   Number         0  stm32f4xx_it.o ABSOLUTE
@@ -1056,8 +1049,8 @@ Image Symbol Table
     .text                                    0x080004ee   Section        0  d2f.o(.text)
     .text                                    0x08000526   Section        0  llshl.o(.text)
     .text                                    0x08000544   Section        0  llsshr.o(.text)
-    .text                                    0x08000568   Section        0  iusefp.o(.text)
     .text                                    0x08000568   Section        0  fepilogue.o(.text)
+    .text                                    0x08000568   Section        0  iusefp.o(.text)
     .text                                    0x080005d6   Section        0  depilogue.o(.text)
     .text                                    0x08000690   Section       36  init.o(.text)
     .text                                    0x080006b4   Section        0  llushr.o(.text)
@@ -1182,17 +1175,16 @@ Image Symbol Table
     i.USYSCAN_Convert_Float_to_Bytes         0x08003414   Section        0  my_syscan.o(i.USYSCAN_Convert_Float_to_Bytes)
     i.USYSCAN_OpenThruster                   0x08003434   Section        0  my_syscan.o(i.USYSCAN_OpenThruster)
     i.USYSCAN_Send_Data                      0x08003470   Section        0  my_syscan.o(i.USYSCAN_Send_Data)
-    i.USYSCAN_SystemReady                    0x0800356c   Section        0  my_syscan.o(i.USYSCAN_SystemReady)
-    i.USYSCAN_Transmit                       0x080035a8   Section        0  my_syscan.o(i.USYSCAN_Transmit)
-    i.UsageFault_Handler                     0x08003610   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
-    i.WWDG_ClearFlag                         0x08003614   Section        0  stm32f4xx_wwdg.o(i.WWDG_ClearFlag)
-    i.WWDG_IRQHandler                        0x08003620   Section        0  my_hardwarereset.o(i.WWDG_IRQHandler)
-    i.WWDG_SetCounter                        0x0800362c   Section        0  stm32f4xx_wwdg.o(i.WWDG_SetCounter)
-    i.__scatterload_copy                     0x0800363c   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0800364a   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x0800364c   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.main                                   0x0800365c   Section        0  main.o(i.main)
-    .constdata                               0x080036d4   Section       24  system_stm32f4xx.o(.constdata)
+    i.USYSCAN_Transmit                       0x080035b0   Section        0  my_syscan.o(i.USYSCAN_Transmit)
+    i.UsageFault_Handler                     0x08003618   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
+    i.WWDG_ClearFlag                         0x0800361c   Section        0  stm32f4xx_wwdg.o(i.WWDG_ClearFlag)
+    i.WWDG_IRQHandler                        0x08003628   Section        0  my_hardwarereset.o(i.WWDG_IRQHandler)
+    i.WWDG_SetCounter                        0x08003634   Section        0  stm32f4xx_wwdg.o(i.WWDG_SetCounter)
+    i.__scatterload_copy                     0x08003644   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08003652   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08003654   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.main                                   0x08003664   Section        0  main.o(i.main)
+    .constdata                               0x080036dc   Section       24  system_stm32f4xx.o(.constdata)
     .data                                    0x20000000   Section       12  my_altimeter.o(.data)
     .data                                    0x2000000c   Section        5  my_io.o(.data)
     .data                                    0x20000014   Section       76  my_syscan.o(.data)
@@ -1432,7 +1424,7 @@ Image Symbol Table
     UPMCAN_Configure                         0x080029d9   Thumb Code   396  my_pmcan.o(i.UPMCAN_Configure)
     UPMCAN_Convert_Bytes_to_Float            0x08002b75   Thumb Code    36  my_pmcan.o(i.UPMCAN_Convert_Bytes_to_Float)
     UPMCAN_Convert_Float_to_Bytes            0x08002b99   Thumb Code    32  my_pmcan.o(i.UPMCAN_Convert_Float_to_Bytes)
-    UPMCAN_Initialize_Position               0x08002bb9   Thumb Code   244  my_pmcan.o(i.UPMCAN_Initialize_Position)
+    UPMCAN_Initialize_Position               0x08002bb9   Thumb Code   240  my_pmcan.o(i.UPMCAN_Initialize_Position)
     UPMCAN_Mass_SetOLoop_Duty                0x08002cc5   Thumb Code    64  my_pmcan.o(i.UPMCAN_Mass_SetOLoop_Duty)
     UPMCAN_Mass_Start                        0x08002d0d   Thumb Code    54  my_pmcan.o(i.UPMCAN_Mass_Start)
     UPMCAN_Pistol_SetOLoop_Duty              0x08002d4d   Thumb Code    64  my_pmcan.o(i.UPMCAN_Pistol_SetOLoop_Duty)
@@ -1447,21 +1439,20 @@ Image Symbol Table
     USYSCAN_Convert_Bytes_to_Float           0x080033f1   Thumb Code    36  my_syscan.o(i.USYSCAN_Convert_Bytes_to_Float)
     USYSCAN_Convert_Float_to_Bytes           0x08003415   Thumb Code    32  my_syscan.o(i.USYSCAN_Convert_Float_to_Bytes)
     USYSCAN_OpenThruster                     0x08003435   Thumb Code    52  my_syscan.o(i.USYSCAN_OpenThruster)
-    USYSCAN_Send_Data                        0x08003471   Thumb Code   210  my_syscan.o(i.USYSCAN_Send_Data)
-    USYSCAN_SystemReady                      0x0800356d   Thumb Code    50  my_syscan.o(i.USYSCAN_SystemReady)
-    USYSCAN_Transmit                         0x080035a9   Thumb Code    98  my_syscan.o(i.USYSCAN_Transmit)
-    UsageFault_Handler                       0x08003611   Thumb Code     4  stm32f4xx_it.o(i.UsageFault_Handler)
-    WWDG_ClearFlag                           0x08003615   Thumb Code     8  stm32f4xx_wwdg.o(i.WWDG_ClearFlag)
-    WWDG_IRQHandler                          0x08003621   Thumb Code    12  my_hardwarereset.o(i.WWDG_IRQHandler)
-    WWDG_SetCounter                          0x0800362d   Thumb Code    10  stm32f4xx_wwdg.o(i.WWDG_SetCounter)
-    __scatterload_copy                       0x0800363d   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0800364b   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x0800364d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x0800365d   Thumb Code   112  main.o(i.main)
-    AHBPrescTable                            0x080036d4   Data          16  system_stm32f4xx.o(.constdata)
-    APBPrescTable                            0x080036e4   Data           8  system_stm32f4xx.o(.constdata)
-    Region$$Table$$Base                      0x080036ec   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800370c   Number         0  anon$$obj.o(Region$$Table)
+    USYSCAN_Send_Data                        0x08003471   Thumb Code   276  my_syscan.o(i.USYSCAN_Send_Data)
+    USYSCAN_Transmit                         0x080035b1   Thumb Code    98  my_syscan.o(i.USYSCAN_Transmit)
+    UsageFault_Handler                       0x08003619   Thumb Code     4  stm32f4xx_it.o(i.UsageFault_Handler)
+    WWDG_ClearFlag                           0x0800361d   Thumb Code     8  stm32f4xx_wwdg.o(i.WWDG_ClearFlag)
+    WWDG_IRQHandler                          0x08003629   Thumb Code    12  my_hardwarereset.o(i.WWDG_IRQHandler)
+    WWDG_SetCounter                          0x08003635   Thumb Code    10  stm32f4xx_wwdg.o(i.WWDG_SetCounter)
+    __scatterload_copy                       0x08003645   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08003653   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08003655   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    main                                     0x08003665   Thumb Code   112  main.o(i.main)
+    AHBPrescTable                            0x080036dc   Data          16  system_stm32f4xx.o(.constdata)
+    APBPrescTable                            0x080036ec   Data           8  system_stm32f4xx.o(.constdata)
+    Region$$Table$$Base                      0x080036f4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003714   Number         0  anon$$obj.o(Region$$Table)
     UALTI_in_feet                            0x20000000   Data           4  my_altimeter.o(.data)
     UALTI_in_metres                          0x20000004   Data           4  my_altimeter.o(.data)
     UALTI_in_fathoms                         0x20000008   Data           4  my_altimeter.o(.data)
@@ -1472,6 +1463,7 @@ Image Symbol Table
     LEAK_POSITION_5                          0x20000010   Data           1  my_io.o(.data)
     _can_respond_count                       0x20000017   Data           1  my_syscan.o(.data)
     _syscan_count                            0x20000018   Data           1  my_syscan.o(.data)
+    _send_status                             0x20000019   Data           1  my_syscan.o(.data)
     UPWM_DutyCycle_Pistol                    0x2000001c   Data           4  my_syscan.o(.data)
     UPWM_DutyCycle_Mass                      0x20000020   Data           4  my_syscan.o(.data)
     UPWM_Position_Pistol                     0x20000024   Data           4  my_syscan.o(.data)
@@ -1523,197 +1515,196 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003808, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003810, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000370c, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00003714, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x00000188   Data   RO         3533    RESET               startup_stm32f407xx.o
-    0x08000188   0x08000188   0x00000000   Code   RO         3575  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000188   0x08000188   0x00000004   Code   RO         3588    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x0800018c   0x0800018c   0x00000004   Code   RO         3591    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000190   0x08000190   0x00000000   Code   RO         3593    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000190   0x08000190   0x00000000   Code   RO         3595    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000190   0x08000190   0x00000008   Code   RO         3596    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000198   0x08000198   0x00000004   Code   RO         3603    .ARM.Collect$$$$0000000E  mc_w.l(entry12b.o)
-    0x0800019c   0x0800019c   0x00000000   Code   RO         3598    .ARM.Collect$$$$0000000F  mc_w.l(entry10a.o)
-    0x0800019c   0x0800019c   0x00000000   Code   RO         3600    .ARM.Collect$$$$00000011  mc_w.l(entry11a.o)
-    0x0800019c   0x0800019c   0x00000004   Code   RO         3589    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x080001a0   0x080001a0   0x00000024   Code   RO         3534    .text               startup_stm32f407xx.o
-    0x080001c4   0x080001c4   0x0000014e   Code   RO         3578    .text               mf_w.l(dadd.o)
-    0x08000312   0x08000312   0x000000e4   Code   RO         3580    .text               mf_w.l(dmul.o)
-    0x080003f6   0x080003f6   0x000000de   Code   RO         3582    .text               mf_w.l(ddiv.o)
-    0x080004d4   0x080004d4   0x0000001a   Code   RO         3584    .text               mf_w.l(dfltui.o)
-    0x080004ee   0x080004ee   0x00000038   Code   RO         3586    .text               mf_w.l(d2f.o)
-    0x08000526   0x08000526   0x0000001e   Code   RO         3604    .text               mc_w.l(llshl.o)
-    0x08000544   0x08000544   0x00000024   Code   RO         3606    .text               mc_w.l(llsshr.o)
-    0x08000568   0x08000568   0x00000000   Code   RO         3608    .text               mc_w.l(iusefp.o)
-    0x08000568   0x08000568   0x0000006e   Code   RO         3609    .text               mf_w.l(fepilogue.o)
-    0x080005d6   0x080005d6   0x000000ba   Code   RO         3611    .text               mf_w.l(depilogue.o)
-    0x08000690   0x08000690   0x00000024   Code   RO         3613    .text               mc_w.l(init.o)
-    0x080006b4   0x080006b4   0x00000020   Code   RO         3615    .text               mc_w.l(llushr.o)
-    0x080006d4   0x080006d4   0x00000004   Code   RO         1031    i.BusFault_Handler  stm32f4xx_it.o
-    0x080006d8   0x080006d8   0x00000214   Code   RO          518    i.CAN1_RX0_IRQHandler  my_syscan.o
-    0x080008ec   0x080008ec   0x000000c4   Code   RO          657    i.CAN2_RX1_IRQHandler  my_pmcan.o
-    0x080009b0   0x080009b0   0x00000038   Code   RO         1177    i.CAN_DeInit        stm32f4xx_can.o
-    0x080009e8   0x080009e8   0x00000016   Code   RO         1178    i.CAN_FIFORelease   stm32f4xx_can.o
+    0x08000000   0x08000000   0x00000188   Data   RO         3621    RESET               startup_stm32f407xx.o
+    0x08000188   0x08000188   0x00000000   Code   RO         3663  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000188   0x08000188   0x00000004   Code   RO         3676    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x0800018c   0x0800018c   0x00000004   Code   RO         3679    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000190   0x08000190   0x00000000   Code   RO         3681    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000190   0x08000190   0x00000000   Code   RO         3683    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000190   0x08000190   0x00000008   Code   RO         3684    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000198   0x08000198   0x00000004   Code   RO         3691    .ARM.Collect$$$$0000000E  mc_w.l(entry12b.o)
+    0x0800019c   0x0800019c   0x00000000   Code   RO         3686    .ARM.Collect$$$$0000000F  mc_w.l(entry10a.o)
+    0x0800019c   0x0800019c   0x00000000   Code   RO         3688    .ARM.Collect$$$$00000011  mc_w.l(entry11a.o)
+    0x0800019c   0x0800019c   0x00000004   Code   RO         3677    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x080001a0   0x080001a0   0x00000024   Code   RO         3622    .text               startup_stm32f407xx.o
+    0x080001c4   0x080001c4   0x0000014e   Code   RO         3666    .text               mf_w.l(dadd.o)
+    0x08000312   0x08000312   0x000000e4   Code   RO         3668    .text               mf_w.l(dmul.o)
+    0x080003f6   0x080003f6   0x000000de   Code   RO         3670    .text               mf_w.l(ddiv.o)
+    0x080004d4   0x080004d4   0x0000001a   Code   RO         3672    .text               mf_w.l(dfltui.o)
+    0x080004ee   0x080004ee   0x00000038   Code   RO         3674    .text               mf_w.l(d2f.o)
+    0x08000526   0x08000526   0x0000001e   Code   RO         3692    .text               mc_w.l(llshl.o)
+    0x08000544   0x08000544   0x00000024   Code   RO         3694    .text               mc_w.l(llsshr.o)
+    0x08000568   0x08000568   0x00000000   Code   RO         3696    .text               mc_w.l(iusefp.o)
+    0x08000568   0x08000568   0x0000006e   Code   RO         3697    .text               mf_w.l(fepilogue.o)
+    0x080005d6   0x080005d6   0x000000ba   Code   RO         3699    .text               mf_w.l(depilogue.o)
+    0x08000690   0x08000690   0x00000024   Code   RO         3701    .text               mc_w.l(init.o)
+    0x080006b4   0x080006b4   0x00000020   Code   RO         3703    .text               mc_w.l(llushr.o)
+    0x080006d4   0x080006d4   0x00000004   Code   RO         1119    i.BusFault_Handler  stm32f4xx_it.o
+    0x080006d8   0x080006d8   0x00000214   Code   RO          612    i.CAN1_RX0_IRQHandler  my_syscan.o
+    0x080008ec   0x080008ec   0x000000c4   Code   RO          727    i.CAN2_RX1_IRQHandler  my_pmcan.o
+    0x080009b0   0x080009b0   0x00000038   Code   RO         1265    i.CAN_DeInit        stm32f4xx_can.o
+    0x080009e8   0x080009e8   0x00000016   Code   RO         1266    i.CAN_FIFORelease   stm32f4xx_can.o
     0x080009fe   0x080009fe   0x00000002   PAD
-    0x08000a00   0x08000a00   0x00000108   Code   RO         1179    i.CAN_FilterInit    stm32f4xx_can.o
-    0x08000b08   0x08000b08   0x00000012   Code   RO         1185    i.CAN_ITConfig      stm32f4xx_can.o
-    0x08000b1a   0x08000b1a   0x00000114   Code   RO         1186    i.CAN_Init          stm32f4xx_can.o
-    0x08000c2e   0x08000c2e   0x0000001e   Code   RO         1187    i.CAN_MessagePending  stm32f4xx_can.o
-    0x08000c4c   0x08000c4c   0x000000f0   Code   RO         1189    i.CAN_Receive       stm32f4xx_can.o
-    0x08000d3c   0x08000d3c   0x00000126   Code   RO         1194    i.CAN_Transmit      stm32f4xx_can.o
+    0x08000a00   0x08000a00   0x00000108   Code   RO         1267    i.CAN_FilterInit    stm32f4xx_can.o
+    0x08000b08   0x08000b08   0x00000012   Code   RO         1273    i.CAN_ITConfig      stm32f4xx_can.o
+    0x08000b1a   0x08000b1a   0x00000114   Code   RO         1274    i.CAN_Init          stm32f4xx_can.o
+    0x08000c2e   0x08000c2e   0x0000001e   Code   RO         1275    i.CAN_MessagePending  stm32f4xx_can.o
+    0x08000c4c   0x08000c4c   0x000000f0   Code   RO         1277    i.CAN_Receive       stm32f4xx_can.o
+    0x08000d3c   0x08000d3c   0x00000126   Code   RO         1282    i.CAN_Transmit      stm32f4xx_can.o
     0x08000e62   0x08000e62   0x00000002   PAD
-    0x08000e64   0x08000e64   0x000000a0   Code   RO         1195    i.CAN_TransmitStatus  stm32f4xx_can.o
-    0x08000f04   0x08000f04   0x00000070   Code   RO          235    i.DMA2_Stream5_IRQHandler  my_altimeter.o
-    0x08000f74   0x08000f74   0x00000034   Code   RO         1341    i.DMA_ClearITPendingBit  stm32f4xx_dma.o
-    0x08000fa8   0x08000fa8   0x00000016   Code   RO         1342    i.DMA_Cmd           stm32f4xx_dma.o
+    0x08000e64   0x08000e64   0x000000a0   Code   RO         1283    i.CAN_TransmitStatus  stm32f4xx_can.o
+    0x08000f04   0x08000f04   0x00000070   Code   RO          326    i.DMA2_Stream5_IRQHandler  my_altimeter.o
+    0x08000f74   0x08000f74   0x00000034   Code   RO         1429    i.DMA_ClearITPendingBit  stm32f4xx_dma.o
+    0x08000fa8   0x08000fa8   0x00000016   Code   RO         1430    i.DMA_Cmd           stm32f4xx_dma.o
     0x08000fbe   0x08000fbe   0x00000002   PAD
-    0x08000fc0   0x08000fc0   0x00000064   Code   RO         1352    i.DMA_GetITStatus   stm32f4xx_dma.o
-    0x08001024   0x08001024   0x0000003a   Code   RO         1353    i.DMA_ITConfig      stm32f4xx_dma.o
+    0x08000fc0   0x08000fc0   0x00000064   Code   RO         1440    i.DMA_GetITStatus   stm32f4xx_dma.o
+    0x08001024   0x08001024   0x0000003a   Code   RO         1441    i.DMA_ITConfig      stm32f4xx_dma.o
     0x0800105e   0x0800105e   0x00000002   PAD
-    0x08001060   0x08001060   0x00000058   Code   RO         1354    i.DMA_Init          stm32f4xx_dma.o
-    0x080010b8   0x080010b8   0x00000002   Code   RO         1032    i.DebugMon_Handler  stm32f4xx_it.o
+    0x08001060   0x08001060   0x00000058   Code   RO         1442    i.DMA_Init          stm32f4xx_dma.o
+    0x080010b8   0x080010b8   0x00000002   Code   RO         1120    i.DebugMon_Handler  stm32f4xx_it.o
     0x080010ba   0x080010ba   0x00000002   PAD
-    0x080010bc   0x080010bc   0x00000088   Code   RO          326    i.EXTI15_10_IRQHandler  my_io.o
-    0x08001144   0x08001144   0x00000050   Code   RO          327    i.EXTI2_IRQHandler  my_io.o
-    0x08001194   0x08001194   0x00000050   Code   RO          328    i.EXTI3_IRQHandler  my_io.o
-    0x080011e4   0x080011e4   0x00000050   Code   RO          329    i.EXTI4_IRQHandler  my_io.o
-    0x08001234   0x08001234   0x00000050   Code   RO          330    i.EXTI9_5_IRQHandler  my_io.o
-    0x08001284   0x08001284   0x0000000c   Code   RO         2989    i.EXTI_ClearITPendingBit  stm32f4xx_exti.o
-    0x08001290   0x08001290   0x00000018   Code   RO         2993    i.EXTI_GetITStatus  stm32f4xx_exti.o
-    0x080012a8   0x080012a8   0x00000094   Code   RO         2994    i.EXTI_Init         stm32f4xx_exti.o
-    0x0800133c   0x0800133c   0x0000000c   Code   RO         2767    i.FLASH_SetLatency  stm32f4xx_flash.o
-    0x08001348   0x08001348   0x00000090   Code   RO         1473    i.GPIO_Init         stm32f4xx_gpio.o
-    0x080013d8   0x080013d8   0x00000046   Code   RO         1474    i.GPIO_PinAFConfig  stm32f4xx_gpio.o
-    0x0800141e   0x0800141e   0x00000012   Code   RO         1477    i.GPIO_ReadInputDataBit  stm32f4xx_gpio.o
-    0x08001430   0x08001430   0x00000004   Code   RO         1480    i.GPIO_ResetBits    stm32f4xx_gpio.o
-    0x08001434   0x08001434   0x00000004   Code   RO         1481    i.GPIO_SetBits      stm32f4xx_gpio.o
-    0x08001438   0x08001438   0x00000008   Code   RO         1483    i.GPIO_ToggleBits   stm32f4xx_gpio.o
-    0x08001440   0x08001440   0x00000004   Code   RO         1033    i.HardFault_Handler  stm32f4xx_it.o
-    0x08001444   0x08001444   0x00000004   Code   RO         1034    i.MemManage_Handler  stm32f4xx_it.o
-    0x08001448   0x08001448   0x00000002   Code   RO         1035    i.NMI_Handler       stm32f4xx_it.o
+    0x080010bc   0x080010bc   0x00000088   Code   RO          417    i.EXTI15_10_IRQHandler  my_io.o
+    0x08001144   0x08001144   0x00000050   Code   RO          418    i.EXTI2_IRQHandler  my_io.o
+    0x08001194   0x08001194   0x00000050   Code   RO          419    i.EXTI3_IRQHandler  my_io.o
+    0x080011e4   0x080011e4   0x00000050   Code   RO          420    i.EXTI4_IRQHandler  my_io.o
+    0x08001234   0x08001234   0x00000050   Code   RO          421    i.EXTI9_5_IRQHandler  my_io.o
+    0x08001284   0x08001284   0x0000000c   Code   RO         3077    i.EXTI_ClearITPendingBit  stm32f4xx_exti.o
+    0x08001290   0x08001290   0x00000018   Code   RO         3081    i.EXTI_GetITStatus  stm32f4xx_exti.o
+    0x080012a8   0x080012a8   0x00000094   Code   RO         3082    i.EXTI_Init         stm32f4xx_exti.o
+    0x0800133c   0x0800133c   0x0000000c   Code   RO         2855    i.FLASH_SetLatency  stm32f4xx_flash.o
+    0x08001348   0x08001348   0x00000090   Code   RO         1561    i.GPIO_Init         stm32f4xx_gpio.o
+    0x080013d8   0x080013d8   0x00000046   Code   RO         1562    i.GPIO_PinAFConfig  stm32f4xx_gpio.o
+    0x0800141e   0x0800141e   0x00000012   Code   RO         1565    i.GPIO_ReadInputDataBit  stm32f4xx_gpio.o
+    0x08001430   0x08001430   0x00000004   Code   RO         1568    i.GPIO_ResetBits    stm32f4xx_gpio.o
+    0x08001434   0x08001434   0x00000004   Code   RO         1569    i.GPIO_SetBits      stm32f4xx_gpio.o
+    0x08001438   0x08001438   0x00000008   Code   RO         1571    i.GPIO_ToggleBits   stm32f4xx_gpio.o
+    0x08001440   0x08001440   0x00000004   Code   RO         1121    i.HardFault_Handler  stm32f4xx_it.o
+    0x08001444   0x08001444   0x00000004   Code   RO         1122    i.MemManage_Handler  stm32f4xx_it.o
+    0x08001448   0x08001448   0x00000002   Code   RO         1123    i.NMI_Handler       stm32f4xx_it.o
     0x0800144a   0x0800144a   0x00000002   PAD
-    0x0800144c   0x0800144c   0x00000078   Code   RO         1125    i.NVIC_Init         misc.o
-    0x080014c4   0x080014c4   0x00000002   Code   RO         1036    i.PendSV_Handler    stm32f4xx_it.o
+    0x0800144c   0x0800144c   0x00000078   Code   RO         1213    i.NVIC_Init         misc.o
+    0x080014c4   0x080014c4   0x00000002   Code   RO         1124    i.PendSV_Handler    stm32f4xx_it.o
     0x080014c6   0x080014c6   0x00000002   PAD
-    0x080014c8   0x080014c8   0x00000020   Code   RO         2392    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x080014e8   0x080014e8   0x00000020   Code   RO         2401    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x08001508   0x08001508   0x00000020   Code   RO         2403    i.RCC_APB1PeriphResetCmd  stm32f4xx_rcc.o
-    0x08001528   0x08001528   0x00000020   Code   RO         2404    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
-    0x08001548   0x08001548   0x00000064   Code   RO         2412    i.RCC_DeInit        stm32f4xx_rcc.o
-    0x080015ac   0x080015ac   0x000000e8   Code   RO         2413    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
-    0x08001694   0x08001694   0x00000040   Code   RO         2414    i.RCC_GetFlagStatus  stm32f4xx_rcc.o
-    0x080016d4   0x080016d4   0x00000018   Code   RO         2417    i.RCC_HCLKConfig    stm32f4xx_rcc.o
-    0x080016ec   0x080016ec   0x00000010   Code   RO         2418    i.RCC_HSEConfig     stm32f4xx_rcc.o
-    0x080016fc   0x080016fc   0x00000018   Code   RO         2428    i.RCC_PCLK1Config   stm32f4xx_rcc.o
-    0x08001714   0x08001714   0x00000018   Code   RO         2429    i.RCC_PCLK2Config   stm32f4xx_rcc.o
-    0x0800172c   0x0800172c   0x0000000c   Code   RO         2430    i.RCC_PLLCmd        stm32f4xx_rcc.o
-    0x08001738   0x08001738   0x00000024   Code   RO         2431    i.RCC_PLLConfig     stm32f4xx_rcc.o
-    0x0800175c   0x0800175c   0x00000018   Code   RO         2442    i.RCC_SYSCLKConfig  stm32f4xx_rcc.o
-    0x08001774   0x08001774   0x00000038   Code   RO         2444    i.RCC_WaitForHSEStartUp  stm32f4xx_rcc.o
-    0x080017ac   0x080017ac   0x00000002   Code   RO         1037    i.SVC_Handler       stm32f4xx_it.o
+    0x080014c8   0x080014c8   0x00000020   Code   RO         2480    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x080014e8   0x080014e8   0x00000020   Code   RO         2489    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x08001508   0x08001508   0x00000020   Code   RO         2491    i.RCC_APB1PeriphResetCmd  stm32f4xx_rcc.o
+    0x08001528   0x08001528   0x00000020   Code   RO         2492    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
+    0x08001548   0x08001548   0x00000064   Code   RO         2500    i.RCC_DeInit        stm32f4xx_rcc.o
+    0x080015ac   0x080015ac   0x000000e8   Code   RO         2501    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
+    0x08001694   0x08001694   0x00000040   Code   RO         2502    i.RCC_GetFlagStatus  stm32f4xx_rcc.o
+    0x080016d4   0x080016d4   0x00000018   Code   RO         2505    i.RCC_HCLKConfig    stm32f4xx_rcc.o
+    0x080016ec   0x080016ec   0x00000010   Code   RO         2506    i.RCC_HSEConfig     stm32f4xx_rcc.o
+    0x080016fc   0x080016fc   0x00000018   Code   RO         2516    i.RCC_PCLK1Config   stm32f4xx_rcc.o
+    0x08001714   0x08001714   0x00000018   Code   RO         2517    i.RCC_PCLK2Config   stm32f4xx_rcc.o
+    0x0800172c   0x0800172c   0x0000000c   Code   RO         2518    i.RCC_PLLCmd        stm32f4xx_rcc.o
+    0x08001738   0x08001738   0x00000024   Code   RO         2519    i.RCC_PLLConfig     stm32f4xx_rcc.o
+    0x0800175c   0x0800175c   0x00000018   Code   RO         2530    i.RCC_SYSCLKConfig  stm32f4xx_rcc.o
+    0x08001774   0x08001774   0x00000038   Code   RO         2532    i.RCC_WaitForHSEStartUp  stm32f4xx_rcc.o
+    0x080017ac   0x080017ac   0x00000002   Code   RO         1125    i.SVC_Handler       stm32f4xx_it.o
     0x080017ae   0x080017ae   0x00000002   PAD
-    0x080017b0   0x080017b0   0x00000040   Code   RO         1577    i.SYSCFG_EXTILineConfig  stm32f4xx_syscfg.o
+    0x080017b0   0x080017b0   0x00000040   Code   RO         1665    i.SYSCFG_EXTILineConfig  stm32f4xx_syscfg.o
     0x080017f0   0x080017f0   0x00000068   Code   RO            4    i.SystemClock_Config  main.o
-    0x08001858   0x08001858   0x000000c0   Code   RO         3541    i.SystemCoreClockUpdate  system_stm32f4xx.o
-    0x08001918   0x08001918   0x00000064   Code   RO         3542    i.SystemInit        system_stm32f4xx.o
-    0x0800197c   0x0800197c   0x00000028   Code   RO          926    i.TIM2_IRQHandler   my_antiroll.o
-    0x080019a4   0x080019a4   0x00000020   Code   RO          658    i.TIM4_IRQHandler   my_pmcan.o
-    0x080019c4   0x080019c4   0x000000b8   Code   RO          928    i.TIM7_IRQHandler   my_antiroll.o
-    0x08001a7c   0x08001a7c   0x00000006   Code   RO         1644    i.TIM_ClearFlag     stm32f4xx_tim.o
-    0x08001a82   0x08001a82   0x00000006   Code   RO         1645    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
-    0x08001a88   0x08001a88   0x00000018   Code   RO         1650    i.TIM_Cmd           stm32f4xx_tim.o
-    0x08001aa0   0x08001aa0   0x00000006   Code   RO         1669    i.TIM_GetCounter    stm32f4xx_tim.o
-    0x08001aa6   0x08001aa6   0x00000012   Code   RO         1670    i.TIM_GetFlagStatus  stm32f4xx_tim.o
-    0x08001ab8   0x08001ab8   0x00000022   Code   RO         1671    i.TIM_GetITStatus   stm32f4xx_tim.o
-    0x08001ada   0x08001ada   0x00000012   Code   RO         1675    i.TIM_ITConfig      stm32f4xx_tim.o
-    0x08001aec   0x08001aec   0x00000004   Code   RO         1712    i.TIM_SetCompare1   stm32f4xx_tim.o
-    0x08001af0   0x08001af0   0x00000004   Code   RO         1716    i.TIM_SetCounter    stm32f4xx_tim.o
-    0x08001af4   0x08001af4   0x00000084   Code   RO         1722    i.TIM_TimeBaseInit  stm32f4xx_tim.o
-    0x08001b78   0x08001b78   0x0000003c   Code   RO          236    i.UALTI_ArrangeData  my_altimeter.o
-    0x08001bb4   0x08001bb4   0x00000038   Code   RO          237    i.UALTI_Checksum    my_altimeter.o
-    0x08001bec   0x08001bec   0x0000014c   Code   RO          238    i.UALTI_Configuration  my_altimeter.o
-    0x08001d38   0x08001d38   0x0000003a   Code   RO          239    i.UALTI_Convert2Int  my_altimeter.o
+    0x08001858   0x08001858   0x000000c0   Code   RO         3629    i.SystemCoreClockUpdate  system_stm32f4xx.o
+    0x08001918   0x08001918   0x00000064   Code   RO         3630    i.SystemInit        system_stm32f4xx.o
+    0x0800197c   0x0800197c   0x00000028   Code   RO         1008    i.TIM2_IRQHandler   my_antiroll.o
+    0x080019a4   0x080019a4   0x00000020   Code   RO          728    i.TIM4_IRQHandler   my_pmcan.o
+    0x080019c4   0x080019c4   0x000000b8   Code   RO         1010    i.TIM7_IRQHandler   my_antiroll.o
+    0x08001a7c   0x08001a7c   0x00000006   Code   RO         1732    i.TIM_ClearFlag     stm32f4xx_tim.o
+    0x08001a82   0x08001a82   0x00000006   Code   RO         1733    i.TIM_ClearITPendingBit  stm32f4xx_tim.o
+    0x08001a88   0x08001a88   0x00000018   Code   RO         1738    i.TIM_Cmd           stm32f4xx_tim.o
+    0x08001aa0   0x08001aa0   0x00000006   Code   RO         1757    i.TIM_GetCounter    stm32f4xx_tim.o
+    0x08001aa6   0x08001aa6   0x00000012   Code   RO         1758    i.TIM_GetFlagStatus  stm32f4xx_tim.o
+    0x08001ab8   0x08001ab8   0x00000022   Code   RO         1759    i.TIM_GetITStatus   stm32f4xx_tim.o
+    0x08001ada   0x08001ada   0x00000012   Code   RO         1763    i.TIM_ITConfig      stm32f4xx_tim.o
+    0x08001aec   0x08001aec   0x00000004   Code   RO         1800    i.TIM_SetCompare1   stm32f4xx_tim.o
+    0x08001af0   0x08001af0   0x00000004   Code   RO         1804    i.TIM_SetCounter    stm32f4xx_tim.o
+    0x08001af4   0x08001af4   0x00000084   Code   RO         1810    i.TIM_TimeBaseInit  stm32f4xx_tim.o
+    0x08001b78   0x08001b78   0x0000003c   Code   RO          327    i.UALTI_ArrangeData  my_altimeter.o
+    0x08001bb4   0x08001bb4   0x00000038   Code   RO          328    i.UALTI_Checksum    my_altimeter.o
+    0x08001bec   0x08001bec   0x0000014c   Code   RO          329    i.UALTI_Configuration  my_altimeter.o
+    0x08001d38   0x08001d38   0x0000003a   Code   RO          330    i.UALTI_Convert2Int  my_altimeter.o
     0x08001d72   0x08001d72   0x00000002   PAD
-    0x08001d74   0x08001d74   0x000002fc   Code   RO          240    i.UALTI_ConvertData  my_altimeter.o
-    0x08002070   0x08002070   0x00000018   Code   RO          929    i.UANRO_CCW_Direction  my_antiroll.o
-    0x08002088   0x08002088   0x00000018   Code   RO          930    i.UANRO_CW_Direction  my_antiroll.o
-    0x080020a0   0x080020a0   0x00000048   Code   RO          933    i.UANRO_Limit_value  my_antiroll.o
-    0x080020e8   0x080020e8   0x000001d8   Code   RO          934    i.UANRO_PID_Control_Position  my_antiroll.o
-    0x080022c0   0x080022c0   0x00000014   Code   RO          936    i.UANRO_PWM_Out     my_antiroll.o
-    0x080022d4   0x080022d4   0x00000024   Code   RO          937    i.UANRO_ResetEncoder  my_antiroll.o
-    0x080022f8   0x080022f8   0x00000018   Code   RO          940    i.UANRO_Stop_Motor  my_antiroll.o
+    0x08001d74   0x08001d74   0x000002fc   Code   RO          331    i.UALTI_ConvertData  my_altimeter.o
+    0x08002070   0x08002070   0x00000018   Code   RO         1011    i.UANRO_CCW_Direction  my_antiroll.o
+    0x08002088   0x08002088   0x00000018   Code   RO         1012    i.UANRO_CW_Direction  my_antiroll.o
+    0x080020a0   0x080020a0   0x00000048   Code   RO         1015    i.UANRO_Limit_value  my_antiroll.o
+    0x080020e8   0x080020e8   0x000001d8   Code   RO         1016    i.UANRO_PID_Control_Position  my_antiroll.o
+    0x080022c0   0x080022c0   0x00000014   Code   RO         1018    i.UANRO_PWM_Out     my_antiroll.o
+    0x080022d4   0x080022d4   0x00000024   Code   RO         1019    i.UANRO_ResetEncoder  my_antiroll.o
+    0x080022f8   0x080022f8   0x00000018   Code   RO         1022    i.UANRO_Stop_Motor  my_antiroll.o
     0x08002310   0x08002310   0x00000020   Code   RO          197    i.UDELAY_Configuration  my_delay.o
     0x08002330   0x08002330   0x00000068   Code   RO          198    i.UDELAY_ms         my_delay.o
     0x08002398   0x08002398   0x00000068   Code   RO          199    i.UDELAY_us         my_delay.o
-    0x08002400   0x08002400   0x0000000a   Code   RO          483    i.UHRST_ResetCNT    my_hardwarereset.o
+    0x08002400   0x08002400   0x0000000a   Code   RO          574    i.UHRST_ResetCNT    my_hardwarereset.o
     0x0800240a   0x0800240a   0x00000002   PAD
-    0x0800240c   0x0800240c   0x0000054c   Code   RO          335    i.UIO_Configuration  my_io.o
-    0x08002958   0x08002958   0x00000014   Code   RO          342    i.UIO_LEDORANGE_OFF  my_io.o
-    0x0800296c   0x0800296c   0x00000014   Code   RO          343    i.UIO_LEDORANGE_ON  my_io.o
-    0x08002980   0x08002980   0x00000014   Code   RO          344    i.UIO_LEDORANGE_TOGGLE  my_io.o
-    0x08002994   0x08002994   0x00000024   Code   RO          347    i.UIO_Light_Cmd     my_io.o
-    0x080029b8   0x080029b8   0x0000001e   Code   RO          659    i.UPMCAN_Checksum   my_pmcan.o
+    0x0800240c   0x0800240c   0x0000054c   Code   RO          426    i.UIO_Configuration  my_io.o
+    0x08002958   0x08002958   0x00000014   Code   RO          433    i.UIO_LEDORANGE_OFF  my_io.o
+    0x0800296c   0x0800296c   0x00000014   Code   RO          434    i.UIO_LEDORANGE_ON  my_io.o
+    0x08002980   0x08002980   0x00000014   Code   RO          435    i.UIO_LEDORANGE_TOGGLE  my_io.o
+    0x08002994   0x08002994   0x00000024   Code   RO          438    i.UIO_Light_Cmd     my_io.o
+    0x080029b8   0x080029b8   0x0000001e   Code   RO          729    i.UPMCAN_Checksum   my_pmcan.o
     0x080029d6   0x080029d6   0x00000002   PAD
-    0x080029d8   0x080029d8   0x0000019c   Code   RO          660    i.UPMCAN_Configure  my_pmcan.o
-    0x08002b74   0x08002b74   0x00000024   Code   RO          661    i.UPMCAN_Convert_Bytes_to_Float  my_pmcan.o
-    0x08002b98   0x08002b98   0x00000020   Code   RO          662    i.UPMCAN_Convert_Float_to_Bytes  my_pmcan.o
-    0x08002bb8   0x08002bb8   0x0000010c   Code   RO          663    i.UPMCAN_Initialize_Position  my_pmcan.o
-    0x08002cc4   0x08002cc4   0x00000048   Code   RO          669    i.UPMCAN_Mass_SetOLoop_Duty  my_pmcan.o
-    0x08002d0c   0x08002d0c   0x00000040   Code   RO          674    i.UPMCAN_Mass_Start  my_pmcan.o
-    0x08002d4c   0x08002d4c   0x00000048   Code   RO          681    i.UPMCAN_Pistol_SetOLoop_Duty  my_pmcan.o
-    0x08002d94   0x08002d94   0x00000040   Code   RO          687    i.UPMCAN_Pistol_Start  my_pmcan.o
-    0x08002dd4   0x08002dd4   0x00000340   Code   RO          688    i.UPMCAN_RunMotor   my_pmcan.o
-    0x08003114   0x08003114   0x00000068   Code   RO          689    i.UPMCAN_Transmit   my_pmcan.o
-    0x0800317c   0x0800317c   0x00000018   Code   RO         2204    i.USART_Cmd         stm32f4xx_usart.o
-    0x08003194   0x08003194   0x00000012   Code   RO         2205    i.USART_DMACmd      stm32f4xx_usart.o
+    0x080029d8   0x080029d8   0x0000019c   Code   RO          730    i.UPMCAN_Configure  my_pmcan.o
+    0x08002b74   0x08002b74   0x00000024   Code   RO          731    i.UPMCAN_Convert_Bytes_to_Float  my_pmcan.o
+    0x08002b98   0x08002b98   0x00000020   Code   RO          732    i.UPMCAN_Convert_Float_to_Bytes  my_pmcan.o
+    0x08002bb8   0x08002bb8   0x0000010c   Code   RO          733    i.UPMCAN_Initialize_Position  my_pmcan.o
+    0x08002cc4   0x08002cc4   0x00000048   Code   RO          740    i.UPMCAN_Mass_SetOLoop_Duty  my_pmcan.o
+    0x08002d0c   0x08002d0c   0x00000040   Code   RO          745    i.UPMCAN_Mass_Start  my_pmcan.o
+    0x08002d4c   0x08002d4c   0x00000048   Code   RO          752    i.UPMCAN_Pistol_SetOLoop_Duty  my_pmcan.o
+    0x08002d94   0x08002d94   0x00000040   Code   RO          758    i.UPMCAN_Pistol_Start  my_pmcan.o
+    0x08002dd4   0x08002dd4   0x00000340   Code   RO          759    i.UPMCAN_RunMotor   my_pmcan.o
+    0x08003114   0x08003114   0x00000068   Code   RO          761    i.UPMCAN_Transmit   my_pmcan.o
+    0x0800317c   0x0800317c   0x00000018   Code   RO         2292    i.USART_Cmd         stm32f4xx_usart.o
+    0x08003194   0x08003194   0x00000012   Code   RO         2293    i.USART_DMACmd      stm32f4xx_usart.o
     0x080031a6   0x080031a6   0x00000002   PAD
-    0x080031a8   0x080031a8   0x000000d4   Code   RO         2211    i.USART_Init        stm32f4xx_usart.o
-    0x0800327c   0x0800327c   0x0000001e   Code   RO          521    i.USYSCAN_Checksum  my_syscan.o
+    0x080031a8   0x080031a8   0x000000d4   Code   RO         2299    i.USART_Init        stm32f4xx_usart.o
+    0x0800327c   0x0800327c   0x0000001e   Code   RO          615    i.USYSCAN_Checksum  my_syscan.o
     0x0800329a   0x0800329a   0x00000002   PAD
-    0x0800329c   0x0800329c   0x00000154   Code   RO          522    i.USYSCAN_Configure  my_syscan.o
-    0x080033f0   0x080033f0   0x00000024   Code   RO          523    i.USYSCAN_Convert_Bytes_to_Float  my_syscan.o
-    0x08003414   0x08003414   0x00000020   Code   RO          524    i.USYSCAN_Convert_Float_to_Bytes  my_syscan.o
-    0x08003434   0x08003434   0x0000003c   Code   RO          528    i.USYSCAN_OpenThruster  my_syscan.o
-    0x08003470   0x08003470   0x000000fc   Code   RO          531    i.USYSCAN_Send_Data  my_syscan.o
-    0x0800356c   0x0800356c   0x0000003c   Code   RO          533    i.USYSCAN_SystemReady  my_syscan.o
-    0x080035a8   0x080035a8   0x00000068   Code   RO          536    i.USYSCAN_Transmit  my_syscan.o
-    0x08003610   0x08003610   0x00000004   Code   RO         1038    i.UsageFault_Handler  stm32f4xx_it.o
-    0x08003614   0x08003614   0x0000000c   Code   RO         3054    i.WWDG_ClearFlag    stm32f4xx_wwdg.o
-    0x08003620   0x08003620   0x0000000c   Code   RO          484    i.WWDG_IRQHandler   my_hardwarereset.o
-    0x0800362c   0x0800362c   0x00000010   Code   RO         3059    i.WWDG_SetCounter   stm32f4xx_wwdg.o
-    0x0800363c   0x0800363c   0x0000000e   Code   RO         3619    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800364a   0x0800364a   0x00000002   Code   RO         3620    i.__scatterload_null  mc_w.l(handlers.o)
-    0x0800364c   0x0800364c   0x0000000e   Code   RO         3621    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800365a   0x0800365a   0x00000002   PAD
-    0x0800365c   0x0800365c   0x00000078   Code   RO            5    i.main              main.o
-    0x080036d4   0x080036d4   0x00000018   Data   RO         3543    .constdata          system_stm32f4xx.o
-    0x080036ec   0x080036ec   0x00000020   Data   RO         3617    Region$$Table       anon$$obj.o
+    0x0800329c   0x0800329c   0x00000154   Code   RO          616    i.USYSCAN_Configure  my_syscan.o
+    0x080033f0   0x080033f0   0x00000024   Code   RO          617    i.USYSCAN_Convert_Bytes_to_Float  my_syscan.o
+    0x08003414   0x08003414   0x00000020   Code   RO          618    i.USYSCAN_Convert_Float_to_Bytes  my_syscan.o
+    0x08003434   0x08003434   0x0000003c   Code   RO          621    i.USYSCAN_OpenThruster  my_syscan.o
+    0x08003470   0x08003470   0x00000140   Code   RO          623    i.USYSCAN_Send_Data  my_syscan.o
+    0x080035b0   0x080035b0   0x00000068   Code   RO          626    i.USYSCAN_Transmit  my_syscan.o
+    0x08003618   0x08003618   0x00000004   Code   RO         1126    i.UsageFault_Handler  stm32f4xx_it.o
+    0x0800361c   0x0800361c   0x0000000c   Code   RO         3142    i.WWDG_ClearFlag    stm32f4xx_wwdg.o
+    0x08003628   0x08003628   0x0000000c   Code   RO          575    i.WWDG_IRQHandler   my_hardwarereset.o
+    0x08003634   0x08003634   0x00000010   Code   RO         3147    i.WWDG_SetCounter   stm32f4xx_wwdg.o
+    0x08003644   0x08003644   0x0000000e   Code   RO         3707    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08003652   0x08003652   0x00000002   Code   RO         3708    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08003654   0x08003654   0x0000000e   Code   RO         3709    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08003662   0x08003662   0x00000002   PAD
+    0x08003664   0x08003664   0x00000078   Code   RO            5    i.main              main.o
+    0x080036dc   0x080036dc   0x00000018   Data   RO         3631    .constdata          system_stm32f4xx.o
+    0x080036f4   0x080036f4   0x00000020   Data   RO         3705    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800370c, Size: 0x00000640, Max: 0x00020000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08003714, Size: 0x00000640, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x0800370c   0x0000000c   Data   RW          247    .data               my_altimeter.o
-    0x2000000c   0x08003718   0x00000005   Data   RW          348    .data               my_io.o
-    0x20000011   0x0800371d   0x00000003   PAD
-    0x20000014   0x08003720   0x0000004c   Data   RW          538    .data               my_syscan.o
-    0x20000060   0x0800376c   0x00000044   Data   RW          691    .data               my_pmcan.o
-    0x200000a4   0x080037b0   0x00000004   PAD
-    0x200000a8   0x080037b4   0x00000040   Data   RW          941    .data               my_antiroll.o
-    0x200000e8   0x080037f4   0x00000010   Data   RW         2445    .data               stm32f4xx_rcc.o
-    0x200000f8   0x08003804   0x00000004   Data   RW         3544    .data               system_stm32f4xx.o
+    0x20000000   0x08003714   0x0000000c   Data   RW          338    .data               my_altimeter.o
+    0x2000000c   0x08003720   0x00000005   Data   RW          439    .data               my_io.o
+    0x20000011   0x08003725   0x00000003   PAD
+    0x20000014   0x08003728   0x0000004c   Data   RW          628    .data               my_syscan.o
+    0x20000060   0x08003774   0x00000044   Data   RW          763    .data               my_pmcan.o
+    0x200000a4   0x080037b8   0x00000004   PAD
+    0x200000a8   0x080037bc   0x00000040   Data   RW         1023    .data               my_antiroll.o
+    0x200000e8   0x080037fc   0x00000010   Data   RW         2533    .data               stm32f4xx_rcc.o
+    0x200000f8   0x0800380c   0x00000004   Data   RW         3632    .data               system_stm32f4xx.o
     0x200000fc        -       0x000000ac   Zero   RW            6    .bss                main.o
     0x200001a8        -       0x0000000c   Zero   RW          200    .bss                my_delay.o
-    0x200001b4        -       0x0000004c   Zero   RW          246    .bss                my_altimeter.o
-    0x20000200        -       0x00000028   Zero   RW          537    .bss                my_syscan.o
-    0x20000228        -       0x00000014   Zero   RW          690    .bss                my_pmcan.o
-    0x2000023c   0x08003808   0x00000004   PAD
-    0x20000240        -       0x00000400   Zero   RW         3531    STACK               startup_stm32f407xx.o
+    0x200001b4        -       0x0000004c   Zero   RW          337    .bss                my_altimeter.o
+    0x20000200        -       0x00000028   Zero   RW          627    .bss                my_syscan.o
+    0x20000228        -       0x00000014   Zero   RW          762    .bss                my_pmcan.o
+    0x2000023c   0x08003810   0x00000004   PAD
+    0x20000240        -       0x00000400   Zero   RW         3619    STACK               startup_stm32f407xx.o
 
 
 ==============================================================================
@@ -1723,15 +1714,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       224          8          0          0        172     323176   main.o
+       224          8          0          0        172     323204   main.o
        120         14          0          0          0       1128   misc.o
-      1382         72          0         12         76       6878   my_altimeter.o
+      1382         72          0         12         76       6898   my_altimeter.o
        896        132          0         64          0       7161   my_antiroll.o
-       240         42          0          0         12       1899   my_delay.o
+       240         42          0          0         12     312227   my_delay.o
         22          0          0          0          0       1007   my_hardwarereset.o
-      1908         94          0          5          0       6813   my_io.o
-      2214        158          0         68         20      12293   my_pmcan.o
-      1446        108          0         76         40      10229   my_syscan.o
+      1908         94          0          5          0       6821   my_io.o
+      2214        162          0         68         20      12321   my_pmcan.o
+      1454        100          0         76         40       9808   my_syscan.o
         36          8        392          0       1024        884   startup_stm32f407xx.o
       1360         34          0          0          0       7481   stm32f4xx_can.o
        320         38          0          0          0       4762   stm32f4xx_dma.o
@@ -1747,7 +1738,7 @@ Image component sizes
        292         40         24          4          0       2015   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-     12292        922        448        252       1348     420709   Object Totals
+     12300        918        448        252       1348     730700   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         26          0          0          7          4          0   (incl. Padding)
 
@@ -1799,15 +1790,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     13644        938        448        252       1348     410269   Grand Totals
-     13644        938        448        252       1348     410269   ELF Image Totals
-     13644        938        448        252          0          0   ROM Totals
+     13652        934        448        252       1348     720360   Grand Totals
+     13652        934        448        252       1348     720360   ELF Image Totals
+     13652        934        448        252          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                14092 (  13.76kB)
+    Total RO  Size (Code + RO Data)                14100 (  13.77kB)
     Total RW  Size (RW Data + ZI Data)              1600 (   1.56kB)
-    Total ROM Size (Code + RO Data + RW Data)      14344 (  14.01kB)
+    Total ROM Size (Code + RO Data + RW Data)      14352 (  14.02kB)
 
 ==============================================================================
 

@@ -14,9 +14,9 @@
  */ 
 const uint8_t _sbusLostFrame = 0x04;
 const uint8_t _sbusFailSafe = 0x08;
-const long Thruster_power = 50;
-const long Mass_power = 80;
-const long Pistol_power = 80;
+//const long Thruster_power = 50;
+//const long Mass_power = 80;
+//const long Pistol_power = 80;
 const long Rudder_position_min = 1200;
 const long Rudder_position_max = 2400;
 const long Rudder_position_mid = 1800;
@@ -29,10 +29,27 @@ const long Pistol_position_max = 2600;
 Re-maps a number from one range to another. That is, a value of fromLow would get mapped to toLow, a value of fromHigh to toHigh, values in-between to values in-between, etc.
 */
 long map(long x, long in_min, long in_max, long out_min, long out_max) 
-	{
-		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-	}
+{
+	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+	
+double map_double(double x, double in_min, double in_max, double out_min, double out_max) 
+{
+	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}	
 
+int16_t map_Ecap(double x)
+{
+	if(x>=0)
+	{
+		return (int16_t)(exp(x) + 8);
+	}
+	else
+	{
+		return (int16_t)(-(exp(-x) + 8));
+	}
+}
+	
 bool SBUS_read(mybuffer *_sbuff, uint16_t* channels, int16_t* scalechannels, bool* failsafe, bool* lostFrame)
 {
 	// parse the SBUS packet
@@ -58,23 +75,38 @@ bool SBUS_read(mybuffer *_sbuff, uint16_t* channels, int16_t* scalechannels, boo
 			channels[13] = (uint16_t) ((_sbuff->mbuff_rx[18]>>7 |_sbuff->mbuff_rx[19]<<1 |_sbuff->mbuff_rx[20]<<9)  	 & 0x07FF);
 			channels[14] = (uint16_t) ((_sbuff->mbuff_rx[20]>>2 |_sbuff->mbuff_rx[21]<<6)                   				   & 0x07FF);
 			channels[15] = (uint16_t) ((_sbuff->mbuff_rx[21]>>5 |_sbuff->mbuff_rx[22]<<3)            					         & 0x07FF);
-		  scalechannels[1]=map(channels[1],176,1811,-Rudder_position_max,-Rudder_position_min);		// Rudder
-			scalechannels[2]=map(channels[2],172,1811,-Thruster_power,Thruster_power);						// Thruster
-//			scalechannels[2] = -scalechannels[2];
+		  scalechannels[1]=map(channels[1],176,1811,-Rudder_position_max,-Rudder_position_min);	// Rudder
 			scalechannels[0]=map(channels[0],176,1811,Mass_position_min,Mass_position_max);				// Doi trong
-//			scalechannels[3]=map(channels[3],313,1593,-Pistol_power,Pistol_power);							// Nothing
-//			scalechannels[5]=map(channels[5],306,1694,0,100);		// scale 0 to 100
 			scalechannels[5]=map(channels[5],172,1811,0,2);																				// Pistol
-			scalechannels[7]=map(channels[7],172,1811,0,1);
-//			scalechannels[7]=map(channels[7],75,1925,0,100);		// scale 0 to 100
-//			scalechannels[8]=map(channels[8],75,1925,0,100);		// scale 0 to 100
+			scalechannels[7]=map(channels[7],172,1811,0,1);																				// Switch
+//			scalechannels[2]=map(channels[2],172,1811,-Thruster_power,Thruster_power);						// Thruster
+
+			double thruster_convert = map_double(channels[2],172,1811, -4.5, 4.5);
+			scalechannels[2] = map_Ecap(thruster_convert);																				// Thruster
 			if(channels[15] < 500)																//Devo7 shut down
 			{		
-				scalechannels[1] = Rudder_position_mid; //Rudder to mid position
-				scalechannels[2] = 0;										//Thruster stop			
-				scalechannels[5] = 1;										//Pistol stop
-				Flag.Devo7_Off = true;			
+				Flag.Devo7_Off = true;	
 			}
+			else
+			{
+				Flag.Devo7_Off = false;
+			}
+			if(!Flag.Devo7_Off)
+				Flag.Joystick_Is_On = true;
+			else
+				scalechannels[7] = 0;
+			if(scalechannels[7] == 1 && Flag.Joystick_Is_On)
+				Flag.Emergency = true;
+			if(scalechannels[7] == 0 && Flag.Emergency && !Flag.Devo7_Off)
+			{
+				Flag.Joystick_Enable = false;
+				Flag.Joystick_Disable = true;
+				Flag.Emergency = false;
+			}
+			if(Flag.Devo7_Off && Flag.Joystick_Is_On)
+				Flag.Run_First_Time_After_Devo7_Off = true;
+			if(Flag.Run_First_Time_After_Devo7_Off)
+				Flag.Joystick_Is_On = false;
 		}
 		if (lostFrame) 
 		{
@@ -119,12 +151,5 @@ void clearScaleSbus(int16_t* _scalechannels,uint16_t* _channels)
 				_channels[i]=0;
 			}
 	}
-
-
-
-
-
-
-
 
 

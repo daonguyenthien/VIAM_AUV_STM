@@ -41,8 +41,8 @@
 		#define   USARTx_JOYSTICK_DMA_Stream												DMA2_Stream1
 		#define		USARTx_JOYSTICK_DMA_CLK_Cmd		  									RCC_AHB1PeriphClockCmd
 		#define		USARTx_JOYSTICK_DMA_Stream_IRQn										DMA2_Stream1_IRQn
-		#define 	USARTx_JOYSTICK_DMA_IRQPreemptionPriority					0x01
-		#define 	USARTx_JOYSTICK_DMA_IRQSubPriority								0x02
+		#define 	USARTx_JOYSTICK_DMA_IRQPreemptionPriority					0x00
+		#define 	USARTx_JOYSTICK_DMA_IRQSubPriority								0x01
 		
 		#define		USARTx_JOYSTICK_DMA_Stream_IRQHandler							DMA2_Stream1_IRQHandler
 		#define		USARTx_JOYSTICK_IRQHandler												USART6_IRQHandler

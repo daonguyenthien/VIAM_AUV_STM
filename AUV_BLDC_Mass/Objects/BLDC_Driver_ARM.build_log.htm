@@ -21,17 +21,32 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
 Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
-E:\BKRA\AUV\AUV_Board_ARM_Coding-main\fix can v5\AUV_BLDC_Mass\BLDC_Driver_ARM.uvprojx
+E:\BKRA\AUV\AUV_Board_ARM_Coding-main\fix can v6_2\AUV_BLDC_Mass\BLDC_Driver_ARM.uvprojx
 Project File Date:  10/28/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Control_BLDC'
-compiling main.c...
+compiling User_HALLSensor.c...
+User_HALLSensor.c(25): warning:  #550-D: variable "Timer_Overload"  was set but never used
+  static uint32_t Timer_Overload = 0;
+User_HALLSensor.c(26): warning:  #177-D: variable "Timer_Check_iMotor"  was declared but never referenced
+  static uint32_t Timer_Check_iMotor = 0;
+User_HALLSensor.c(27): warning:  #550-D: variable "Timer_Check_VeloMotor"  was set but never used
+  static uint32_t Timer_Check_VeloMotor = 0;
+User_HALLSensor.c(29): warning:  #550-D: variable "Timer_CounterPerRevolution"  was set but never used
+  static uint32_t Timer_CounterPerRevolution = 0;
+User_HALLSensor.c(30): warning:  #550-D: variable "Timer_FilterCounterPerRevolution"  was set but never used
+  static uint32_t Timer_FilterCounterPerRevolution = 0;
+User_HALLSensor.c(32): warning:  #177-D: variable "PoleCounts"  was declared but never referenced
+  static uint8_t PoleCounts = 0, UALTHM_Time_Control = 0;
+User_HALLSensor.c(33): warning:  #550-D: variable "Motor_Running"  was set but never used
+  static bool Motor_Running = false;
+User_HALLSensor.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=17080 RO-data=364 RW-data=400 ZI-data=4224  
+Program Size: Code=20064 RO-data=484 RW-data=400 ZI-data=4224  
 FromELF: creating hex file...
-".\Objects\BLDC_Driver_ARM.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\BLDC_Driver_ARM.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -58,11 +73,11 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.4.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-      Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-Build Time Elapsed:  00:00:01
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+      Source file:   Device\Source\system_stm32f10x.c
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

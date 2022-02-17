@@ -1,5 +1,5 @@
 Dependencies for Project 'Board_STM32F4_1', Target 'Board_STM32F407_1': (DO NOT MODIFY !)
-F (.\main.c)(0x61D7B4D1)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x62072B7D)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (main.h)(0x60CD02E4)
 I (.\CMSIS\stm32f4xx.h)(0x60CD02E4)
 I (C:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
@@ -41,12 +41,12 @@ I (my_io.h)(0x61D58857)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5F63958C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5F63959A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5F63958C)
-I (my_pmcan.h)(0x61CBCE4D)
+I (my_pmcan.h)(0x6208D826)
 I (my_bms24v40ah.h)(0x60CD02E4)
 I (my_bms24v10ah.h)(0x60CD02E4)
 I (my_altimeter.h)(0x61B08856)
 I (my_straingauge.h)(0x60CD02E4)
-I (my_syscan.h)(0x61CD4A8C)
+I (my_syscan.h)(0x61F0B592)
 I (my_camera.h)(0x60CD02E4)
 I (my_hardwarereset.h)(0x60CD02E4)
 I (my_antiroll.h)(0x60CD02E4)
@@ -128,12 +128,12 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x60CD02E4)
 I (my_io.h)(0x61D58857)
-I (my_pmcan.h)(0x61CBCE4D)
+I (my_pmcan.h)(0x6208D826)
 I (my_bms24v40ah.h)(0x60CD02E4)
 I (my_bms24v10ah.h)(0x60CD02E4)
 I (my_delay.h)(0x60CD02E4)
 I (my_straingauge.h)(0x60CD02E4)
-F (.\my_io.c)(0x61D7B356)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_io.o --omf_browse .\objects\my_io.crf --depend .\objects\my_io.d)
+F (.\my_io.c)(0x62068FBC)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_io.o --omf_browse .\objects\my_io.crf --depend .\objects\my_io.d)
 I (my_io.h)(0x61D58857)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5F63958C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5F63959A)
@@ -173,13 +173,13 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x60CD02E4)
-I (my_pmcan.h)(0x61CBCE4D)
+I (my_pmcan.h)(0x6208D826)
 I (my_bms24v40ah.h)(0x60CD02E4)
 I (my_bms24v10ah.h)(0x60CD02E4)
 I (my_altimeter.h)(0x61B08856)
 I (my_delay.h)(0x60CD02E4)
 I (my_straingauge.h)(0x60CD02E4)
-I (my_syscan.h)(0x61CD4A8C)
+I (my_syscan.h)(0x61F0B592)
 F (.\my_hardwarereset.c)(0x60CD02E4)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_hardwarereset.o --omf_browse .\objects\my_hardwarereset.crf --depend .\objects\my_hardwarereset.d)
 I (my_hardwarereset.h)(0x60CD02E4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5F63958C)
@@ -220,8 +220,8 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x60CD02E4)
-F (.\my_syscan.c)(0x61D589F0)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_syscan.o --omf_browse .\objects\my_syscan.crf --depend .\objects\my_syscan.d)
-I (my_syscan.h)(0x61CD4A8C)
+F (.\my_syscan.c)(0x620CAD89)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_syscan.o --omf_browse .\objects\my_syscan.crf --depend .\objects\my_syscan.d)
+I (my_syscan.h)(0x61F0B592)
 I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x60CD02E4)
 I (.\CMSIS\stm32f4xx.h)(0x60CD02E4)
 I (C:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
@@ -264,11 +264,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5F63958C)
 I (my_bms24v10ah.h)(0x60CD02E4)
 I (my_altimeter.h)(0x61B08856)
 I (my_io.h)(0x61D58857)
-I (my_pmcan.h)(0x61CBCE4D)
+I (my_pmcan.h)(0x6208D826)
 I (my_delay.h)(0x60CD02E4)
 I (my_straingauge.h)(0x60CD02E4)
-F (.\my_pmcan.c)(0x61D7AED6)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_pmcan.o --omf_browse .\objects\my_pmcan.crf --depend .\objects\my_pmcan.d)
-I (my_pmcan.h)(0x61CBCE4D)
+F (.\my_pmcan.c)(0x620DBF26)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_pmcan.o --omf_browse .\objects\my_pmcan.crf --depend .\objects\my_pmcan.d)
+I (my_pmcan.h)(0x6208D826)
 I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x60CD02E4)
 I (.\CMSIS\stm32f4xx.h)(0x60CD02E4)
 I (C:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
@@ -312,7 +312,7 @@ I (my_bms24v10ah.h)(0x60CD02E4)
 I (my_altimeter.h)(0x61B08856)
 I (my_delay.h)(0x60CD02E4)
 I (my_straingauge.h)(0x60CD02E4)
-I (my_syscan.h)(0x61CD4A8C)
+I (my_syscan.h)(0x61F0B592)
 I (my_io.h)(0x61D58857)
 F (.\my_leddriver.c)(0x60CD02E4)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\my_leddriver.o --omf_browse .\objects\my_leddriver.crf --depend .\objects\my_leddriver.d)
 I (my_leddriver.h)(0x60CD02E4)
@@ -900,7 +900,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x60CD02E4)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x60CD02E4)
 F (RTE\Device\STM32F407VGTx\startup_stm32f407xx.s)(0x6173BE83)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list .\listings\startup_stm32f407xx.lst --xref -o .\objects\startup_stm32f407xx.o --depend .\objects\startup_stm32f407xx.d)
-F (RTE\Device\STM32F407VGTx\system_stm32f4xx.c)(0x60CD02E4)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
+F (RTE\Device\STM32F407VGTx\system_stm32f4xx.c)(0x61F9F5A6)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\AUV_Board_STM32F4_1_v3 -I .\CMSIS -I .\STM32F4xx_StdPeriph_Driver\inc -I .\FatFs-I.\RTE\_Board_STM32F407_1-IC:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Acer\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="8000000"-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
 I (.\CMSIS\stm32f4xx.h)(0x60CD02E4)
 I (C:\Users\Acer\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63958C)

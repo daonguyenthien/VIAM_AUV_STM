@@ -575,25 +575,25 @@ void TIM4_IRQHandler(void)
 //			Timer_Overload++;
 //		}
 //		
-//		if(UCAN_GetFlag(Flag_PID_Control)||UCAN_GetFlag(Flag_Fuzzy_Control))
-//		{
-//			//UALTHM_Time_Control++;
-//			//if(UALTHM_Time_Control == UALTHM_TIME_SAMPLING)
-//			//{
-//				if (!UCAN_GetFlag(Flag_Motor_Position)){
-//					if(UCAN_GetFlag(Flag_Motor_Run_CW))
-//					{
-//						UALTHM_Controller(Motor_CW);
-//					}
-//					else if(UCAN_GetFlag(Flag_Motor_Run_CCW))
-//					{
-//						UALTHM_Controller(Motor_CCW);
-//					}
-//				}
-//				else UALTHM_Controller(Motor_CCW);
-				//UALTHM_Time_Control = 0;
-			//}
-//		}
+		if(UCAN_GetFlag(Flag_PID_Control)||UCAN_GetFlag(Flag_Fuzzy_Control))
+		{
+			UALTHM_Time_Control++;
+			if(UALTHM_Time_Control == UALTHM_TIME_SAMPLING)
+			{
+				if (!UCAN_GetFlag(Flag_Motor_Position)){
+					if(UCAN_GetFlag(Flag_Motor_Run_CW))
+					{
+						UALTHM_Controller(Motor_CW);
+					}
+					else if(UCAN_GetFlag(Flag_Motor_Run_CCW))
+					{
+						UALTHM_Controller(Motor_CCW);
+					}
+				}
+				else UALTHM_Controller(Motor_CW);
+				UALTHM_Time_Control = 0;
+			}
+		}
 		TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
 //		TIM_ClearFlag(TIM4, TIM_FLAG_Update);
 	}

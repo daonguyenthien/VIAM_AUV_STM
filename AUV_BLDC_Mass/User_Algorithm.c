@@ -54,7 +54,7 @@ int32_t _Position_Pulse = 0;
 int32_t PositionError = 0, Pre_PositionError = 0, Pre_Pre_PositionError = 0;
 static uint32_t _uk = 0, _uk1 = 0, _yk = 0, _yk1 = 0;
 
-static int _DutyCycle = 0;
+int _DutyCycle = 0;
 /* Private const/macros ------------------------------------------------------*/
 #define DU_NB 	-3
 #define DU_NM 	-2
