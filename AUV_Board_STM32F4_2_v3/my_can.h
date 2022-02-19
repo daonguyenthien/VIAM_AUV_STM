@@ -20,6 +20,8 @@
 #include "UGV_UART_JOYSTICK.h"
 #include "UGV_SBUS.h"
 #include "my_delay.h"
+#include "my_adc.h"
+#include "my_balance.h"
 
 typedef struct
 {
@@ -100,7 +102,6 @@ struct Status_flag
 	bool End_Frame_Jetson;
 };
 extern struct Status_flag Flag;
-extern float a;
 
 extern float Rudder_Angle;
 
@@ -124,6 +125,7 @@ void Run_Thruster(float speed_percent);
 void Run_Thruster_PID(float speed);
 void Run_Pistol(float speed_percent);
 void Run_Mass(float speed_percent);
+void Stop_Mass(void);
 void UCAN_Send_Mass_Speed(float speed);
 void UCAN_Send_Data(void);
 void UCAN_Send_End_Frame_ARM2(void);

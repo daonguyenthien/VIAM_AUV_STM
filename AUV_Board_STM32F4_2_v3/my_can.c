@@ -72,9 +72,7 @@ static int _MASKCANBUS_ARM_2 = 0xFE;
 
 uint8_t CAN_RxMessage[8];
 uint8_t CAN_TxMessage[8];
-uint8_t test = 0;
 uint8_t _send_status = 0;
-float a = 0;
 
 union CAN_UpdateData
 {
@@ -406,6 +404,19 @@ void Run_Mass(float speed_percent)
 	CAN_TxMessage[4] = UPWM_DutyCycle.byte.a3;
 	CAN_TxMessage[5] = UPWM_DutyCycle.byte.a2;
 	CAN_TxMessage[6] = UPWM_DutyCycle.byte.a1;
+	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);
+	UCAN_Transmit(_IDCANBUS_ARM_1, 8, CAN_TxMessage);
+}
+
+void Stop_Mass(void)
+{
+	CAN_TxMessage[0] = 'O';
+	CAN_TxMessage[1] = 'S';
+	CAN_TxMessage[2] = 'M';
+	CAN_TxMessage[3] = 0;
+	CAN_TxMessage[4] = 0;
+	CAN_TxMessage[5] = 0;
+	CAN_TxMessage[6] = 0;
 	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);
 	UCAN_Transmit(_IDCANBUS_ARM_1, 8, CAN_TxMessage);
 }
@@ -783,17 +794,19 @@ void UCAN_TIM_IRQHandler_2(void)
 					label:
 					if(Flag.Joystick_Enable && !Flag.Joystick_Disable)
 					{
-						UCAN_Run_Motor();
 						if(Flag.Run_First_Time_After_Devo7_Off)
 						{
 							Run_Thruster(0);
 							Run_Pistol(0);
+							Stop_Mass();
 							UMX28_setGoalPosition(254,Rudder_position_mid);
-							
+
 							Flag.Run_First_Time_After_Devo7_Off = false;
 							Flag.Joystick_Enable = false;
 							Flag.Joystick_Disable = true;
+							break;
 						}
+						UCAN_Run_Motor();
 					}
 				break;
 				case 1:
@@ -802,15 +815,13 @@ void UCAN_TIM_IRQHandler_2(void)
 					goto label;
 				break;
 			}
-			if(Flag.Send_Data || Flag.End_Frame_Jetson)
+			if(Flag.Send_Data && Flag.End_Frame_Jetson)
 			{
 				UCAN_Send_Data();
 				Flag.End_Frame_Jetson = false;
-			}
-			if(Flag.Joystick_Enable)
-			{
 				UCAN_Send_End_Frame_ARM2();
 			}
+			//Balance_Operation();
 		}
 		TIM_ClearITPendingBit(UCAN_TIM_2, TIM_IT_Update);
 }

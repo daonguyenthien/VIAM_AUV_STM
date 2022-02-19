@@ -417,6 +417,10 @@ void USYSCAN_CAN_IRQHandler(void)
 					USYSCAN_Convert_Bytes_to_Float(&USYSCAN_RxMessage.Data[3],&UPWM_Position_Mass);
 					Flag.Mass_Position = true;
 			}
+			if((USYSCAN_RxMessage.Data[0] == 'O')&&(USYSCAN_RxMessage.Data[1] == 'S')&&(USYSCAN_RxMessage.Data[2] == 'M'))
+			{
+					Flag.Mass_Stop = true;
+			}
 			if((USYSCAN_RxMessage.Data[0] == 'C')&&(USYSCAN_RxMessage.Data[1] == 'A')&&(USYSCAN_RxMessage.Data[2] == 'N')
 			 &&(USYSCAN_RxMessage.Data[3] == 'O'))
 			{

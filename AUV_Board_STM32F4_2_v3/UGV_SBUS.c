@@ -75,21 +75,20 @@ bool SBUS_read(mybuffer *_sbuff, uint16_t* channels, int16_t* scalechannels, boo
 			channels[13] = (uint16_t) ((_sbuff->mbuff_rx[18]>>7 |_sbuff->mbuff_rx[19]<<1 |_sbuff->mbuff_rx[20]<<9)  	 & 0x07FF);
 			channels[14] = (uint16_t) ((_sbuff->mbuff_rx[20]>>2 |_sbuff->mbuff_rx[21]<<6)                   				   & 0x07FF);
 			channels[15] = (uint16_t) ((_sbuff->mbuff_rx[21]>>5 |_sbuff->mbuff_rx[22]<<3)            					         & 0x07FF);
-		  scalechannels[1]=map(channels[1],176,1811,-Rudder_position_max,-Rudder_position_min);	// Rudder
-			scalechannels[0]=map(channels[0],176,1811,Mass_position_min,Mass_position_max);				// Doi trong
-			scalechannels[5]=map(channels[5],172,1811,0,2);																				// Pistol
-			scalechannels[7]=map(channels[7],172,1811,0,1);																				// Switch
-//			scalechannels[2]=map(channels[2],172,1811,-Thruster_power,Thruster_power);						// Thruster
-
-			double thruster_convert = map_double(channels[2],172,1811, -4.5, 4.5);
-			scalechannels[2] = map_Ecap(thruster_convert);																				// Thruster
-			if(channels[15] < 500)																//Devo7 shut down
+		  
+			if(channels[15] < 500)
 			{		
 				Flag.Devo7_Off = true;	
 			}
 			else
 			{
 				Flag.Devo7_Off = false;
+				scalechannels[1]=map(channels[1],176,1811,-Rudder_position_max,-Rudder_position_min);	// Rudder
+				scalechannels[0]=map(channels[0],176,1811,Mass_position_min,Mass_position_max);				// Doi trong
+				scalechannels[5]=map(channels[5],172,1811,0,2);																				// Pistol
+				scalechannels[7]=map(channels[7],172,1811,0,1);																				// Switch
+				double thruster_convert = map_double(channels[2],172,1811, -4.5, 4.5);
+				scalechannels[2] = map_Ecap(thruster_convert);																				// Thruster
 			}
 			if(!Flag.Devo7_Off)
 				Flag.Joystick_Is_On = true;

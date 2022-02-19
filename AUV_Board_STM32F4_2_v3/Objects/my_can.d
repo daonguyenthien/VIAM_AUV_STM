@@ -49,3 +49,8 @@
 .\objects\my_can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\my_can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\my_can.o: UGV_SBUS.h
+.\objects\my_can.o: my_adc.h
+.\objects\my_can.o: my_keller_pa3.h
+.\objects\my_can.o: my_can.h
+.\objects\my_can.o: my_balance.h
+.\objects\my_can.o: my_keller_pa3.h

@@ -1,25 +1,26 @@
 #include "my_adc.h"
 
-#define UADC_GPIO_PORT			GPIOC
-#define UADC_GPIO_Pin 			GPIO_Pin_1
-#define UADC_GPIO_CLK				RCC_AHB1Periph_GPIOC
+#define UADC_GPIO_PORT			GPIOA
+#define UADC_GPIO_Pin 			GPIO_Pin_0						//Roll-Hall-B
+#define UADC_GPIO_CLK				RCC_AHB1Periph_GPIOA
 #define UADC_GPIO_CLK_Cmd		RCC_AHB1PeriphClockCmd
 
 #define UADC								ADC1
+#define UADC_Channel				ADC_Channel_0
 #define UADC_CLK 						RCC_APB2Periph_ADC1
 #define UADC_CLK_Cmd				RCC_APB2PeriphClockCmd
 
-#define UADC_DMA																	DMA1
-#define UADC_DMA_Channel													DMA_Channel_5
-#define UADC_DMA_Stream														DMA2_Stream1
-#define UADC_DMA_Stream_IRQn											DMA2_Stream1_IRQn
-#define UADC_DMA_CLK															RCC_AHB1Periph_DMA1
+#define UADC_DMA																	DMA2
+#define UADC_DMA_Channel													DMA_Channel_0
+#define UADC_DMA_Stream														DMA2_Stream0
+#define UADC_DMA_Stream_IRQn											DMA2_Stream0_IRQn
+#define UADC_DMA_CLK															RCC_AHB1Periph_DMA2
 #define UADC_DMA_CLK_Cmd													RCC_AHB1PeriphClockCmd
 #define UADC_DMA_IRQPreemptionPriority						0x00
-#define UADC_DMA_IRQSubPriority										0x01
-#define	USARTx_JOYSTICK_DMA_Stream_IRQHandler			DMA2_Stream2_IRQHandler
+#define UADC_DMA_IRQSubPriority										0x06
+#define	USARTx_JOYSTICK_DMA_Stream_IRQHandler			DMA2_Stream0_IRQHandler
 
-uint32_t data = 0;
+volatile uint32_t xsen_angle = 0;
 
 void ADC_Config(void)
 {
@@ -34,15 +35,16 @@ void ADC_Config(void)
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(UADC_GPIO_PORT, &GPIO_InitStructure);
 	
 	UADC_DMA_CLK_Cmd(UADC_DMA_CLK,ENABLE);
-	DMA_Initstructure.DMA_Channel = 
-	DMA_Initstructure.DMA_Memory0BaseAddr = (uint32_t)&data;
+	DMA_Initstructure.DMA_Channel = UADC_DMA_Channel;
+	DMA_Initstructure.DMA_Memory0BaseAddr = (uint32_t)&xsen_angle;
 	DMA_Initstructure.DMA_PeripheralBaseAddr = (uint32_t)(&(UADC->DR));
 	DMA_Initstructure.DMA_DIR = DMA_DIR_PeripheralToMemory;									//peripheral to memory
 	DMA_Initstructure.DMA_BufferSize = 1;
 	DMA_Initstructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
-	DMA_Initstructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	DMA_Initstructure.DMA_MemoryInc = DMA_PeripheralInc_Disable;
 	DMA_Initstructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Word;
 	DMA_Initstructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Word;
 	DMA_Initstructure.DMA_Mode = DMA_Mode_Circular;
@@ -63,15 +65,16 @@ void ADC_Config(void)
 //	DMA_ITConfig(UADC_DMA_Stream, DMA_IT_TC, ENABLE);
 	
 	UADC_CLK_Cmd(UADC_CLK,ENABLE);
-	ADC_Initstructure.ADC_ScanConvMode = DISABLE;
 	ADC_Initstructure.ADC_ContinuousConvMode = ENABLE;
 	ADC_Initstructure.ADC_DataAlign = ADC_DataAlign_Right;
 	ADC_Initstructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC1; 
 	ADC_Initstructure.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;
 	ADC_Initstructure.ADC_NbrOfConversion = 1;
 	ADC_Initstructure.ADC_ScanConvMode = ENABLE;
+	ADC_Initstructure.ADC_Resolution = ADC_Resolution_12b;
 	ADC_Init(UADC, &ADC_Initstructure);
-	ADC_RegularChannelConfig(UADC,ADC_Channel_0,1,ADC_SampleTime_480Cycles);
+	
+	ADC_RegularChannelConfig(UADC,UADC_Channel,1,ADC_SampleTime_480Cycles);
 	ADC_Cmd(UADC, ENABLE);
 	ADC_DMACmd(UADC, ENABLE);
 	ADC_TempSensorVrefintCmd(ENABLE);

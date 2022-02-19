@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Board_STM32F4_1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Board_STM32F4_1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Feb 17 10:21:10 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Feb 18 17:18:29 2022
 <BR><P>
 <H3>Maximum Stack Usage =        232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -474,7 +474,7 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.BusFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[1e]"></a>CAN1_RX0_IRQHandler</STRONG> (Thumb, 502 bytes, Stack size 8 bytes, my_syscan.o(i.CAN1_RX0_IRQHandler))
+<P><STRONG><a name="[1e]"></a>CAN1_RX0_IRQHandler</STRONG> (Thumb, 532 bytes, Stack size 8 bytes, my_syscan.o(i.CAN1_RX0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = CAN1_RX0_IRQHandler &rArr; CAN_Receive
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Receive
@@ -1150,7 +1150,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[93]"></a>UPMCAN_RunMotor</STRONG> (Thumb, 790 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_RunMotor))
+<P><STRONG><a name="[93]"></a>UPMCAN_RunMotor</STRONG> (Thumb, 820 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_RunMotor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = UPMCAN_RunMotor &rArr; UPMCAN_Pistol_SetOLoop_Duty &rArr; UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty

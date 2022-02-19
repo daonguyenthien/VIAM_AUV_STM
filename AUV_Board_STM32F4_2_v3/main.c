@@ -41,6 +41,7 @@
 #include "UGV_SBUS.h"
 #include "UGV_UART_JOYSTICK.h"
 #include "my_balance.h"
+#include "my_adc.h"
 
 /** @addtogroup Template_Project
   * @{
@@ -89,24 +90,27 @@ int main(void)
 	UIO_Configuration();
 	UDELAY_ms(500);
 	
-	UCAN_Configure();
-	UDELAY_ms(500);
-	
-	USART6_DMA_Rx_Config();
+	ADC_Config();
 	UDELAY_ms(500);
 	
 //	Algorithm_Config();
 //	UDELAY_ms(500);
 	
+	UCAN_Configure();
+	UDELAY_ms(500);
+	
+	USART6_DMA_Rx_Config();
+	UDELAY_ms(500);
+
 //	UANRO_Config();
 //	UDELAY_ms(500);
 //  UCAN_Configure();
 //	UDELAY_ms(500);
 
-//	UKELLER_Configuration();	
-//	UDELAY_ms(100);
-//	UKELLER_KELLER_Init(250);
-//	UDELAY_ms(500);
+	UKELLER_Configuration();	
+	UDELAY_ms(100);
+	UKELLER_KELLER_Init(250);
+	UDELAY_ms(500);
 
 //	UBMS40_Configuration();
 //	UDELAY_ms(500);
@@ -120,7 +124,7 @@ int main(void)
 	UMX28_Init();
 	UDELAY_ms(500);
 	UMX28_pingServo(254);
-
+	
 //	UDELAY_ms(5000);
 //	UMX28_setGoalPosition(1, 4095);
 //	UHRST_Configuration();
@@ -128,9 +132,6 @@ int main(void)
 //  UCAN_PassSystemReady(ENABLE);
 //	UIO_LEDORANGE_ON();
 //	UDELAY_ms(1000);
-	
-//	uint8_t data[1] = {0x29};
-//	UCAN_Transmit(0X25, 1, data);
 	
 //	CalcCRC16(buff, 3, &a1, &a2);
   /* Infinite loop */
@@ -144,14 +145,11 @@ int main(void)
 	UDELAY_ms(1000);
 	UIO_LEDORANGE_OFF();
 	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-//	UMX28_setGoalPosition(254,0);
-
-//	Run_Thruster_PID(400);
-//	Open_Thruster();
-//	Run_Thruster(20);
+	
+	//Membership_Function_Declaration();
   while (1)
   {
-		
+		//xsen_angle = ADC_GetConversionValue(ADC1);
   }
 	return 0;
 }

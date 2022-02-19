@@ -49,9 +49,12 @@
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: UGV_SBUS.h
+.\objects\main.o: my_adc.h
+.\objects\main.o: my_keller_pa3.h
+.\objects\main.o: my_can.h
+.\objects\main.o: my_balance.h
+.\objects\main.o: my_keller_pa3.h
 .\objects\main.o: my_dvl.h
 .\objects\main.o: my_hardwarereset.h
 .\objects\main.o: my_keller_pa3.h
 .\objects\main.o: my_antiroll.h
-.\objects\main.o: my_balance.h
-.\objects\main.o: my_keller_pa3.h

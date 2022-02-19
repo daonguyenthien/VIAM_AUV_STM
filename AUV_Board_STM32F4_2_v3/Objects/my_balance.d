@@ -51,3 +51,7 @@
 .\objects\my_balance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\my_balance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\my_balance.o: UGV_SBUS.h
+.\objects\my_balance.o: my_adc.h
+.\objects\my_balance.o: my_keller_pa3.h
+.\objects\my_balance.o: my_can.h
+.\objects\my_balance.o: my_balance.h

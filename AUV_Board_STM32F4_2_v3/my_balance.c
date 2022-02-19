@@ -16,20 +16,21 @@
 			
 			#define 	ALGORITHM_TIM_IRQHandler						TIM1_BRK_TIM9_IRQHandler	
 
-#define SAMPLE_TIME 10 // (ms)
+#define SAMPLE_TIME 20 // (ms)
 #define pi 3.14159
 #define THETA_MIN -pi/3
 #define THETA_MAX pi/3
+#define K1 3/pi
 #define THETADOT_MIN -1	//(rad/s)
 #define THETADOT_MAX 1
-static double Ku = 70;
-static double K1 = 1/THETA_MAX;
-static double K2 = 1/THETADOT_MAX;
+#define K2 1
+#define Ku 70
 
 union Data_In theta_in, velocity_out;
-static float pre_theta_in, thetadot_in;
-static float velocity_defuzzy;
-static double theta_filtered, theta_dot_filetered;
+float pre_theta_in, thetadot_in;
+float velocity_defuzzy;
+double theta_filtered, theta_dot_filetered;
+static bool first_data_pass = true;
 
 struct
 {
@@ -150,6 +151,11 @@ static double min(double x, double y)
 	else
 		return x;
 }
+
+static float map(uint16_t x, uint16_t in_min, uint16_t in_max, float out_min, float out_max) 
+{
+	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}	
 
 void Control_Laws(Defuzzy_And_Or_Method method, double x1, double x2,int8_t y)
 {
@@ -276,8 +282,32 @@ void Filter_In(float x1, float x2)
 	theta_dot_filetered = (double)x2*K2;
 }
 
+void Reset_Value(void)
+{
+	muy_velocity.NVB = 0;
+	muy_velocity.NB = 0;
+	muy_velocity.NM = 0;
+	muy_velocity.NS = 0;
+	muy_velocity.ZE = 0;
+	muy_velocity.PS = 0;
+	muy_velocity.PM = 0;
+	muy_velocity.PB = 0;
+	muy_velocity.PVB = 0;
+	
+	sum.NVB = 0;
+	sum.NB = 0;
+	sum.NM = 0;
+	sum.NS = 0;
+	sum.ZE = 0;
+	sum.PS = 0;
+	sum.PM = 0;
+	sum.PB = 0;
+	sum.PVB = 0;
+}
+
 void Balance_Operation(void)
 {
+	theta_in.value = map(xsen_angle,0,4095,-pi/3,pi/3);
 	thetadot_in = x2xdot(theta_in.value, pre_theta_in);
 	Filter_In(theta_in.value, thetadot_in);
 	//Fuzzy Logic Controller
@@ -286,8 +316,13 @@ void Balance_Operation(void)
 	velocity_defuzzy = Defuzzy_Result(MAX_MIN);
 	//************************************************
 	velocity_out.value = velocity_defuzzy*Ku;
-	UCAN_Send_Mass_Speed(velocity_out.value);
+	if(first_data_pass)
+		first_data_pass = false;
+	else
+		UCAN_Send_Mass_Speed(velocity_out.value);
 	pre_theta_in = theta_in.value;
+	Reset_Value();
+	
 }
 
 void ALGORITHM_TIM_IRQHandler(void)

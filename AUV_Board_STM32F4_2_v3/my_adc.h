@@ -15,6 +15,8 @@
 #include "my_can.h"
 #include "my_delay.h"
 
+extern volatile uint32_t xsen_angle;
+
 void ADC_Config(void);
 
 #endif

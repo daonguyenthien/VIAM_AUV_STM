@@ -13,6 +13,7 @@
 #include "my_io.h"
 #include "my_can.h"
 #include "my_delay.h"
+#include "my_adc.h"
 
 typedef enum
 {
@@ -56,6 +57,7 @@ void Filter_In(float x1, float x2);
 void Fuzzy_Result(double x1, double x2);
 void Control_Laws(Defuzzy_And_Or_Method method, double x1, double x2,int8_t y);
 float Defuzzy_Result(Defuzzy_And_Or_Method method);
+void Reset_Value(void);
 void Balance_Operation(void);
 
 #endif

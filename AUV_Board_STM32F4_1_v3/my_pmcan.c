@@ -59,7 +59,7 @@ uint8_t UPMCAN_TxMsgArr[8];
 uint8_t _pmcan_count = 0;
 
 float Pistol_Speed = 30;
-float Mass_Speed = 30;
+float Mass_Speed = 50;
 union Position
 {
 	float Value;
@@ -639,7 +639,7 @@ void UPMCAN_RunMotor(void)
 //	}
 	
 // Mass Shifter	
-	if(Flag.Mass_Position)
+	if(Flag.Mass_Position && !Flag.Mass_Stop)
 	{
 		if(UPWM_Position_Mass >= Mass_Actual_Position + 1 && GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_5) == 0 && !Flag.Mass_H && !Flag.Mass_T)
 		{
@@ -662,6 +662,11 @@ void UPMCAN_RunMotor(void)
 	{
 		UPMCAN_Mass_SetOLoop_Duty(0,MOTOR_CCW);
 		Flag.Mass_Run_CCW = false;
+	}
+	if(Flag.Mass_Stop)
+	{
+		UPMCAN_Mass_SetOLoop_Duty(0,MOTOR_CW);
+		Flag.Mass_Stop = false;
 	}
 	if((Flag.Mass_T && GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4) == 0) || (Flag.Mass_H && GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_5) == 0))
 	{
@@ -731,7 +736,7 @@ void UPMCAN_RunMotor(void)
 //		Flag.End_Frame_ARM2 = false;
 //		Flag.End_Frame_Jetson = false;
 //	}
-	if(Flag.Send_Data || Flag.End_Frame_Jetson)
+	if(Flag.Send_Data && Flag.End_Frame_ARM2)
 	{
 		USYSCAN_Send_Data();
 		Flag.End_Frame_ARM2 = false;
