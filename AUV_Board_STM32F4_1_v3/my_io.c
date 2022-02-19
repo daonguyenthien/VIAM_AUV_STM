@@ -212,17 +212,6 @@
 			
 
 /* Private variables ---------------------------------------------------------*/
-//typedef enum
-//{
-//	LEAK_POSITION_1 = 0x01,
-//	LEAK_POSITION_2 = 0x02,
-//	LEAK_POSITION_3 = 0x04,
-//	LEAK_POSITION_4 = 0x08,
-//	LEAK_POSITION_5 = 0x10,
-//}Leak_PositionTypeDef;
-
-//uint8_t _leak_position = 0x00;
-
 uint8_t LEAK_POSITION_1 = 0;
 uint8_t LEAK_POSITION_2 = 0;
 uint8_t LEAK_POSITION_3 = 0;

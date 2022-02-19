@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Board_STM32F4_1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Board_STM32F4_1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Jan 07 10:34:43 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Feb 18 17:18:29 2022
 <BR><P>
 <H3>Maximum Stack Usage =        232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -120,7 +120,7 @@ Global Symbols
 <P><STRONG><a name="[5d]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(.text)
 </UL>
-<P><STRONG><a name="[d0]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[cf]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[5e]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -130,17 +130,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[d1]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[d0]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[d2]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[d1]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[d3]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[d2]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[d4]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
+<P><STRONG><a name="[d3]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
 
-<P><STRONG><a name="[d5]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[d4]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[d6]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
+<P><STRONG><a name="[d5]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f407xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
@@ -421,21 +421,21 @@ Global Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[d7]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[d6]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[62]"></a>__aeabi_lasr</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, llsshr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[d8]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
+<P><STRONG><a name="[d7]"></a>_ll_sshift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llsshr.o(.text), UNUSED)
 
-<P><STRONG><a name="[d9]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[d8]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[6b]"></a>_float_round</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fepilogue.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 
-<P><STRONG><a name="[da]"></a>_float_epilogue</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, fepilogue.o(.text), UNUSED)
+<P><STRONG><a name="[d9]"></a>_float_epilogue</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, fepilogue.o(.text), UNUSED)
 
 <P><STRONG><a name="[64]"></a>_double_round</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, depilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _double_round
@@ -463,18 +463,18 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[db]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[da]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[6c]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 
-<P><STRONG><a name="[dc]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[db]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.BusFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[1e]"></a>CAN1_RX0_IRQHandler</STRONG> (Thumb, 502 bytes, Stack size 8 bytes, my_syscan.o(i.CAN1_RX0_IRQHandler))
+<P><STRONG><a name="[1e]"></a>CAN1_RX0_IRQHandler</STRONG> (Thumb, 532 bytes, Stack size 8 bytes, my_syscan.o(i.CAN1_RX0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = CAN1_RX0_IRQHandler &rArr; CAN_Receive
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Receive
@@ -486,13 +486,13 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[4b]"></a>CAN2_RX1_IRQHandler</STRONG> (Thumb, 168 bytes, Stack size 8 bytes, my_pmcan.o(i.CAN2_RX1_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = CAN2_RX1_IRQHandler &rArr; CAN_Receive
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = CAN2_RX1_IRQHandler &rArr; UPMCAN_Convert_Bytes_to_Float
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Receive
+<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Convert_Bytes_to_Float
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Checksum
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Receive
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_MessagePending
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_FIFORelease
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Convert_Bytes_to_Float
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Checksum
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
@@ -501,58 +501,58 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 </UL>
 
 <P><STRONG><a name="[70]"></a>CAN_FIFORelease</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_can.o(i.CAN_FIFORelease))
-<BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
+<LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
 </UL>
 
 <P><STRONG><a name="[bd]"></a>CAN_FilterInit</STRONG> (Thumb, 258 bytes, Stack size 8 bytes, stm32f4xx_can.o(i.CAN_FilterInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CAN_FilterInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 </UL>
 
 <P><STRONG><a name="[be]"></a>CAN_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_can.o(i.CAN_ITConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 </UL>
 
 <P><STRONG><a name="[bc]"></a>CAN_Init</STRONG> (Thumb, 276 bytes, Stack size 12 bytes, stm32f4xx_can.o(i.CAN_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = CAN_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 </UL>
 
 <P><STRONG><a name="[6f]"></a>CAN_MessagePending</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, stm32f4xx_can.o(i.CAN_MessagePending))
-<BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
+<LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
 </UL>
 
 <P><STRONG><a name="[6e]"></a>CAN_Receive</STRONG> (Thumb, 240 bytes, Stack size 8 bytes, stm32f4xx_can.o(i.CAN_Receive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CAN_Receive
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
+<LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[c9]"></a>CAN_Transmit</STRONG> (Thumb, 294 bytes, Stack size 8 bytes, stm32f4xx_can.o(i.CAN_Transmit))
+<P><STRONG><a name="[c8]"></a>CAN_Transmit</STRONG> (Thumb, 294 bytes, Stack size 8 bytes, stm32f4xx_can.o(i.CAN_Transmit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CAN_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
 </UL>
 
-<P><STRONG><a name="[ca]"></a>CAN_TransmitStatus</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, stm32f4xx_can.o(i.CAN_TransmitStatus))
+<P><STRONG><a name="[c9]"></a>CAN_TransmitStatus</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, stm32f4xx_can.o(i.CAN_TransmitStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CAN_TransmitStatus
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
 </UL>
 
 <P><STRONG><a name="[4e]"></a>DMA2_Stream5_IRQHandler</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, my_altimeter.o(i.DMA2_Stream5_IRQHandler))
@@ -675,7 +675,7 @@ Global Symbols
 <P><STRONG><a name="[98]"></a>GPIO_Init</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UIO_Configuration
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UALTI_Configuration
@@ -684,7 +684,7 @@ Global Symbols
 <P><STRONG><a name="[99]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 70 bytes, Stack size 20 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_PinAFConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UALTI_Configuration
 </UL>
@@ -726,7 +726,7 @@ Global Symbols
 <P><STRONG><a name="[a0]"></a>NVIC_Init</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UIO_Configuration
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UALTI_Configuration
@@ -736,14 +736,14 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
 <P><STRONG><a name="[97]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UIO_Configuration
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UALTI_Configuration
 </UL>
 
 <P><STRONG><a name="[ac]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UDELAY_Configuration
 </UL>
@@ -761,7 +761,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
-<P><STRONG><a name="[cb]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 214 bytes, Stack size 20 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[ca]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 214 bytes, Stack size 20 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
@@ -895,7 +895,7 @@ Global Symbols
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[c3]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
+<P><STRONG><a name="[c2]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Initialize_Position
 </UL>
 
@@ -1057,25 +1057,25 @@ Global Symbols
 <P><STRONG><a name="[73]"></a>UPMCAN_Checksum</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, my_pmcan.o(i.UPMCAN_Checksum))
 <BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_SetOLoop_Duty
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_Start
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_Start
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_Start
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_Start
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[bb]"></a>UPMCAN_Configure</STRONG> (Thumb, 396 bytes, Stack size 56 bytes, my_pmcan.o(i.UPMCAN_Configure))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = UPMCAN_Configure &rArr; GPIO_PinAFConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Init
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_ITConfig
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_FilterInit
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_DeInit
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Init
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_ITConfig
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_FilterInit
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_DeInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1086,23 +1086,22 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_RX1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[c4]"></a>UPMCAN_Convert_Float_to_Bytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Convert_Float_to_Bytes))
+<P><STRONG><a name="[c3]"></a>UPMCAN_Convert_Float_to_Bytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Convert_Float_to_Bytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = UPMCAN_Convert_Float_to_Bytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_SetOLoop_Duty
 </UL>
 
-<P><STRONG><a name="[bf]"></a>UPMCAN_Initialize_Position</STRONG> (Thumb, 244 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Initialize_Position))
+<P><STRONG><a name="[bf]"></a>UPMCAN_Initialize_Position</STRONG> (Thumb, 240 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Initialize_Position))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = UPMCAN_Initialize_Position &rArr; UPMCAN_Pistol_SetOLoop_Duty &rArr; UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_SystemReady
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_OpenThruster
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_SetOLoop_Duty
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UDELAY_ms
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_OpenThruster
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1110,8 +1109,8 @@ Global Symbols
 <P><STRONG><a name="[82]"></a>UPMCAN_Mass_SetOLoop_Duty</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, my_pmcan.o(i.UPMCAN_Mass_SetOLoop_Duty))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = UPMCAN_Mass_SetOLoop_Duty &rArr; UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Convert_Float_to_Bytes
+<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Convert_Float_to_Bytes
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Checksum
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
@@ -1120,10 +1119,10 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_RunMotor
 </UL>
 
-<P><STRONG><a name="[c6]"></a>UPMCAN_Mass_Start</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Mass_Start))
+<P><STRONG><a name="[c5]"></a>UPMCAN_Mass_Start</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Mass_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = UPMCAN_Mass_Start &rArr; UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Checksum
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1132,8 +1131,8 @@ Global Symbols
 <P><STRONG><a name="[7f]"></a>UPMCAN_Pistol_SetOLoop_Duty</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, my_pmcan.o(i.UPMCAN_Pistol_SetOLoop_Duty))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = UPMCAN_Pistol_SetOLoop_Duty &rArr; UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Convert_Float_to_Bytes
+<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Convert_Float_to_Bytes
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Checksum
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI3_IRQHandler
@@ -1142,36 +1141,36 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_RunMotor
 </UL>
 
-<P><STRONG><a name="[c7]"></a>UPMCAN_Pistol_Start</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Pistol_Start))
+<P><STRONG><a name="[c6]"></a>UPMCAN_Pistol_Start</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_Pistol_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = UPMCAN_Pistol_Start &rArr; UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
+<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Transmit
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Checksum
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[93]"></a>UPMCAN_RunMotor</STRONG> (Thumb, 790 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_RunMotor))
+<P><STRONG><a name="[93]"></a>UPMCAN_RunMotor</STRONG> (Thumb, 820 bytes, Stack size 8 bytes, my_pmcan.o(i.UPMCAN_RunMotor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = UPMCAN_RunMotor &rArr; UPMCAN_Pistol_SetOLoop_Duty &rArr; UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_SetOLoop_Duty
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[c5]"></a>UPMCAN_Transmit</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, my_pmcan.o(i.UPMCAN_Transmit))
+<P><STRONG><a name="[c4]"></a>UPMCAN_Transmit</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, my_pmcan.o(i.UPMCAN_Transmit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = UPMCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_TransmitStatus
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
+<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_TransmitStatus
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_SetOLoop_Duty
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_SetOLoop_Duty
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_Start
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_Start
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_Start
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_Start
 </UL>
 
 <P><STRONG><a name="[a1]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_Cmd))
@@ -1185,30 +1184,29 @@ Global Symbols
 <P><STRONG><a name="[9b]"></a>USART_Init</STRONG> (Thumb, 204 bytes, Stack size 48 bytes, stm32f4xx_usart.o(i.USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UALTI_Configuration
 </UL>
 
 <P><STRONG><a name="[71]"></a>USYSCAN_Checksum</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, my_syscan.o(i.USYSCAN_Checksum))
-<BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_SystemReady
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_OpenThruster
+<BR><BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_OpenThruster
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[cc]"></a>USYSCAN_Configure</STRONG> (Thumb, 328 bytes, Stack size 48 bytes, my_syscan.o(i.USYSCAN_Configure))
+<P><STRONG><a name="[cb]"></a>USYSCAN_Configure</STRONG> (Thumb, 328 bytes, Stack size 48 bytes, my_syscan.o(i.USYSCAN_Configure))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = USYSCAN_Configure &rArr; GPIO_PinAFConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Init
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_ITConfig
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_FilterInit
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_DeInit
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Init
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_ITConfig
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_FilterInit
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_DeInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1219,62 +1217,52 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_RX0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ce]"></a>USYSCAN_Convert_Float_to_Bytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, my_syscan.o(i.USYSCAN_Convert_Float_to_Bytes))
+<P><STRONG><a name="[cd]"></a>USYSCAN_Convert_Float_to_Bytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, my_syscan.o(i.USYSCAN_Convert_Float_to_Bytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USYSCAN_Convert_Float_to_Bytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
+<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
 </UL>
 
-<P><STRONG><a name="[c2]"></a>USYSCAN_OpenThruster</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, my_syscan.o(i.USYSCAN_OpenThruster))
+<P><STRONG><a name="[c1]"></a>USYSCAN_OpenThruster</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, my_syscan.o(i.USYSCAN_OpenThruster))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USYSCAN_OpenThruster &rArr; USYSCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
+<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Checksum
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Initialize_Position
 </UL>
 
-<P><STRONG><a name="[c8]"></a>USYSCAN_Send_Data</STRONG> (Thumb, 210 bytes, Stack size 8 bytes, my_syscan.o(i.USYSCAN_Send_Data))
+<P><STRONG><a name="[c7]"></a>USYSCAN_Send_Data</STRONG> (Thumb, 276 bytes, Stack size 8 bytes, my_syscan.o(i.USYSCAN_Send_Data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USYSCAN_Send_Data &rArr; USYSCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Convert_Float_to_Bytes
+<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Convert_Float_to_Bytes
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Checksum
 </UL>
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_RunMotor
 </UL>
 
-<P><STRONG><a name="[c1]"></a>USYSCAN_SystemReady</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, my_syscan.o(i.USYSCAN_SystemReady))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USYSCAN_SystemReady &rArr; USYSCAN_Transmit &rArr; CAN_TransmitStatus
-</UL>
-<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Transmit
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Checksum
-</UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Initialize_Position
-</UL>
-
-<P><STRONG><a name="[cd]"></a>USYSCAN_Transmit</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, my_syscan.o(i.USYSCAN_Transmit))
+<P><STRONG><a name="[cc]"></a>USYSCAN_Transmit</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, my_syscan.o(i.USYSCAN_Transmit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = USYSCAN_Transmit &rArr; CAN_TransmitStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_TransmitStatus
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
+<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_TransmitStatus
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_SystemReady
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_OpenThruster
+<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Send_Data
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_OpenThruster
 </UL>
 
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[cf]"></a>WWDG_ClearFlag</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_wwdg.o(i.WWDG_ClearFlag))
+<P><STRONG><a name="[ce]"></a>WWDG_ClearFlag</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_wwdg.o(i.WWDG_ClearFlag))
 <BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WWDG_IRQHandler
 </UL>
 
 <P><STRONG><a name="[a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, my_hardwarereset.o(i.WWDG_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = WWDG_IRQHandler &rArr; UHRST_ResetCNT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WWDG_ClearFlag
+<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WWDG_ClearFlag
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UHRST_ResetCNT
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
@@ -1283,18 +1271,18 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UHRST_ResetCNT
 </UL>
 
-<P><STRONG><a name="[dd]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[dc]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[de]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[dd]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[df]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[de]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 112 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = main &rArr; UALTI_Configuration &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_Start
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_Start
+<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USYSCAN_Configure
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Pistol_Start
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Mass_Start
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Initialize_Position
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UPMCAN_Configure
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UIO_LEDORANGE_ON
@@ -1303,7 +1291,7 @@ Global Symbols
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UDELAY_ms
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UDELAY_Configuration
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UALTI_Configuration
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)

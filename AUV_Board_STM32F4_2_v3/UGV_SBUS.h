@@ -17,6 +17,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "UGV_UART_JOYSTICK.h"
 

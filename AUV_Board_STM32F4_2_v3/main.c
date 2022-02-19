@@ -40,6 +40,8 @@
 #include "my_antiroll.h"
 #include "UGV_SBUS.h"
 #include "UGV_UART_JOYSTICK.h"
+#include "my_balance.h"
+#include "my_adc.h"
 
 /** @addtogroup Template_Project
   * @{
@@ -60,10 +62,6 @@ uint16_t _test_Goal_MX28 = 0;
 
 CAN_DataTypeDef CAN_Data;
 
-uint8_t b = 0;
-uint8_t c = 0;
-uint8_t d = 0;
-
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -71,6 +69,7 @@ uint8_t d = 0;
   * @param  None
   * @retval None
   */
+
 int main(void)
 { 
  /*!< At this stage the microcontroller clock setting is already configured, 
@@ -91,21 +90,27 @@ int main(void)
 	UIO_Configuration();
 	UDELAY_ms(500);
 	
+	ADC_Config();
+	UDELAY_ms(500);
+	
+//	Algorithm_Config();
+//	UDELAY_ms(500);
+	
 	UCAN_Configure();
 	UDELAY_ms(500);
 	
 	USART6_DMA_Rx_Config();
 	UDELAY_ms(500);
-	
+
 //	UANRO_Config();
 //	UDELAY_ms(500);
 //  UCAN_Configure();
 //	UDELAY_ms(500);
 
-//	UKELLER_Configuration();	
-//	UDELAY_ms(100);
-//	UKELLER_KELLER_Init(250);
-//	UDELAY_ms(500);
+	UKELLER_Configuration();	
+	UDELAY_ms(100);
+	UKELLER_KELLER_Init(250);
+	UDELAY_ms(500);
 
 //	UBMS40_Configuration();
 //	UDELAY_ms(500);
@@ -119,7 +124,7 @@ int main(void)
 	UMX28_Init();
 	UDELAY_ms(500);
 	UMX28_pingServo(254);
-
+	
 //	UDELAY_ms(5000);
 //	UMX28_setGoalPosition(1, 4095);
 //	UHRST_Configuration();
@@ -128,55 +133,23 @@ int main(void)
 //	UIO_LEDORANGE_ON();
 //	UDELAY_ms(1000);
 	
-//	uint8_t data[1] = {0x29};
-//	UCAN_Transmit(0X25, 1, data);
-	
-
-	
 //	CalcCRC16(buff, 3, &a1, &a2);
   /* Infinite loop */
 	
 //	Close_Thruster();
-//	Open_Piston();
-//	Open_Shifter();
 	Flag.Send_Data = true;
 	Flag.Joystick_Disable = true;
 	scalechannels[7] = 0;
 	scalechannels[5] = 1;
-//	GPIO_SetBits(GPIOC, GPIO_Pin_10);
 	UIO_LEDORANGE_ON();
 	UDELAY_ms(1000);
 	UIO_LEDORANGE_OFF();
-//	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-//	UMX28_setGoalPosition(254,0);
-//	Run_Thruster(20);
+	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
+	
+	//Membership_Function_Declaration();
   while (1)
   {
-		b = GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_11);
-		c = GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_12);
-		d = GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_13);
-		
-		if(b==1 || c==1 || d==1)
-		{
-			UIO_LEDORANGE_ON();
-		}
-//		UMX28_setGoalPosition(254,250);
-//		UDELAY_ms(20000);
-//		GPIO_ResetBits(GPIOC, GPIO_Pin_10);
-//		GPIO_SetBits(GPIOC, GPIO_Pin_10);
-//		UDELAY_ms(1000);
-//		GPIO_ResetBits(GPIOC, GPIO_Pin_10);
-//		UDELAY_ms(1000);
-		
-//		Run_Thruster(20);
-//		UIO_LEDORANGE_TOGGLE();
-//		UDELAY_ms(1000);
-//		UMX28_setGoalPosition(254,rudder_angle);
-//		Close_Thruster();
-//		Open_Piston();
-//		Open_Shifter();
-//		UIO_LEDORANGE_TOGGLE();
-//		UDELAY_ms(1000);
+		//xsen_angle = ADC_GetConversionValue(ADC1);
   }
 	return 0;
 }

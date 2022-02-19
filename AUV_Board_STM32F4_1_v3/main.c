@@ -81,7 +81,7 @@ int main(void)
   //SysTick_Config(RCC_Clocks.HCLK_Frequency / 100);
   
 	UDELAY_Configuration();
-	UDELAY_ms(2000);
+	UDELAY_ms(500);
 
 	UIO_Configuration();
 	UDELAY_ms(100);
@@ -126,33 +126,14 @@ int main(void)
 	UPMCAN_Mass_Start(ENABLE_DRIVER);
 	UDELAY_ms(10);
 	UPMCAN_Initialize_Position();
+
 	Flag.Send_Data = true;
-//	UPMCAN_Pistol_SetOLoop_Duty(20,MOTOR_CCW);
-//	UPMCAN_Mass_SetOLoop_Duty(20,MOTOR_CCW);
-	
+
+	//	UPMCAN_Test_Pistol();
 	/* Infinite loop */
   while (1)
   {
-//		USYSCAN_Test();
-//		USYSCAN_Send_test();
-//		UDELAY_ms(1000);
 		
-//		a = GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_13);
-//		if(a == 0)
-//		{
-//			GPIO_WriteBit(GPIOE, GPIO_Pin_14, 1);
-//		}
-//		else
-//		{
-//			GPIO_WriteBit(GPIOE, GPIO_Pin_14, 0);
-//		}
-		
-//		UPMCAN_Pistol_SetOLoop_Duty(30,MOTOR_CCW);
-//		USYSCAN_SystemNotReady();
-//		UDELAY_ms(1000);
-//		USYSCAN_SystemReady_2();
-//		UDELAY_ms(1000);
-//		a = CAN_MessagePending(CAN2, CAN_FIFO1);
   }
 }
 

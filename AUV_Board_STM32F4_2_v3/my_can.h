@@ -17,6 +17,11 @@
 #include "my_bms24v40ah.h"
 #include "my_keller_pa3.h"
 #include "my_io.h"
+#include "UGV_UART_JOYSTICK.h"
+#include "UGV_SBUS.h"
+#include "my_delay.h"
+#include "my_adc.h"
+#include "my_balance.h"
 
 typedef struct
 {
@@ -85,14 +90,18 @@ typedef enum
 
 struct Status_flag
 {
+	bool Emergency;
 	bool Joystick_Enable;
 	bool Joystick_Disable;
+	bool Pre_Joystick_Enable;
+	bool Pre_Joystick_Disable;
+	bool Joystick_Is_On;
 	bool Devo7_Off;
+	bool Run_First_Time_After_Devo7_Off;
 	bool Send_Data;
 	bool End_Frame_Jetson;
 };
 extern struct Status_flag Flag;
-extern float a;
 
 extern float Rudder_Angle;
 
@@ -108,12 +117,16 @@ bool UCAN_IsNeedCheckSystem(void);
 void UCAN_PassSystemReady(FunctionalState NewState);
 void UCAN_Transmit(int _IDstd,int _length, uint8_t _data[]);
 void UCAN_SystemReady_2(void);
+void Open_Thruster(void);
 void Close_Thruster(void);
 void Open_Pistol(void);
 void Open_Mass(void);
 void Run_Thruster(float speed_percent);
+void Run_Thruster_PID(float speed);
 void Run_Pistol(float speed_percent);
 void Run_Mass(float speed_percent);
+void Stop_Mass(void);
+void UCAN_Send_Mass_Speed(float speed);
 void UCAN_Send_Data(void);
 void UCAN_Send_End_Frame_ARM2(void);
 void UCAN_Run_Motor(void);

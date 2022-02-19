@@ -48,3 +48,8 @@
 .\objects\ugv_sbus.o: my_bms24v40ah.h
 .\objects\ugv_sbus.o: my_keller_pa3.h
 .\objects\ugv_sbus.o: my_io.h
+.\objects\ugv_sbus.o: my_adc.h
+.\objects\ugv_sbus.o: my_keller_pa3.h
+.\objects\ugv_sbus.o: my_can.h
+.\objects\ugv_sbus.o: my_balance.h
+.\objects\ugv_sbus.o: my_keller_pa3.h

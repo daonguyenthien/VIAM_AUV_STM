@@ -102,6 +102,7 @@ struct Status_flag
 	bool Mass_Run_CW;
 	bool Mass_Run_CCW;
 	bool Mass_Position;
+	bool Mass_Stop;
 	bool Pistol_open;
 	bool Pistol_Run_CW_Joystick;
 	bool Pistol_Run_CCW_Joystick;
@@ -147,5 +148,6 @@ void USYSCAN_Send_Data(void);
 void USYSCAN_OpenThruster(void);
 void USYSCAN_Send_test(void);
 void USYSCAN_Test(void);
+void Run_Thruster(float speed_percent);
 
 #endif /* USER_CAN_H_ */

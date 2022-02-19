@@ -160,6 +160,21 @@
           <WinNumber>1</WinNumber>
           <ItemText>posi</ItemText>
         </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Flag,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>_DutyCycle,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>UENC_ActualPosition</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>

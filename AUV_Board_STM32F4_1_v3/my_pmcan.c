@@ -59,7 +59,7 @@ uint8_t UPMCAN_TxMsgArr[8];
 uint8_t _pmcan_count = 0;
 
 float Pistol_Speed = 30;
-float Mass_Speed = 30;
+float Mass_Speed = 50;
 union Position
 {
 	float Value;
@@ -269,6 +269,17 @@ void UPMCAN_Mass_SetOLoop_Duty(float _duty, UPMCAN_Direction_of_Motor_TypeDef _d
 	UPMCAN_TxMsgArr[1] = 'L';
 	UPMCAN_TxMsgArr[2] = _direction;
 	UPMCAN_Convert_Float_to_Bytes(_duty, &UPMCAN_TxMsgArr[3]);
+	UPMCAN_TxMsgArr[7] = UPMCAN_Checksum(UPMCAN_TxMsgArr);
+	
+	UPMCAN_Transmit(_IDCANBUS_MASS_SHIFTER, 8, UPMCAN_TxMsgArr);
+}
+
+void UPMCAN_Mass_Position(float position)
+{
+	UPMCAN_TxMsgArr[0] = 'C';
+	UPMCAN_TxMsgArr[1] = 'P';
+	UPMCAN_TxMsgArr[2] = 'P';
+	UPMCAN_Convert_Float_to_Bytes(position, &UPMCAN_TxMsgArr[3]);
 	UPMCAN_TxMsgArr[7] = UPMCAN_Checksum(UPMCAN_TxMsgArr);
 	
 	UPMCAN_Transmit(_IDCANBUS_MASS_SHIFTER, 8, UPMCAN_TxMsgArr);
@@ -553,7 +564,7 @@ void UPMCAN_Initialize_Position(void)
 	//Move Mass Shifter
 	if(!GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4))
 	{
-		UPMCAN_Mass_SetOLoop_Duty(30,MOTOR_CCW);
+		UPMCAN_Mass_SetOLoop_Duty(50,MOTOR_CCW);
 		while(!GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4));
 		for(uint8_t i = 0; i < 3; i++)
 		{
@@ -578,15 +589,40 @@ void UPMCAN_Initialize_Position(void)
 	}
 	
 	//Mass Shifter to mid
-	UPMCAN_Mass_SetOLoop_Duty(30,MOTOR_CW);
+	UPMCAN_Mass_SetOLoop_Duty(50,MOTOR_CW);
 	while(Mass_Actual_Position < Mass_mid_position);
 	UPMCAN_Mass_SetOLoop_Duty(0,MOTOR_CW);
 	UDELAY_ms(10);
+//	UPMCAN_Mass_Position(29);
 	
-	USYSCAN_SystemReady();
+//	USYSCAN_SystemReady();
 	USYSCAN_OpenThruster();
 	Flag.Done_setup = true;
 	TIM_ITConfig(UPMCAN_TIM, TIM_IT_Update, ENABLE);
+}
+
+void UPMCAN_Test_Pistol(void)
+{
+	
+	for(int i=0; i<50; i+=5)
+	{
+		UPMCAN_Pistol_SetOLoop_Duty(i,MOTOR_CW);
+	}
+	while(!GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_3));
+	for(uint8_t i = 0; i<3; i++)
+	{
+		UPMCAN_Pistol_SetOLoop_Duty(0,MOTOR_CW);
+	}
+	UDELAY_ms(3000);
+	for(int i=0; i<50; i+=5)
+	{
+		UPMCAN_Pistol_SetOLoop_Duty(i,MOTOR_CCW);
+	}
+	while(!GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_2));
+	for(uint8_t i = 0; i<3; i++)
+	{
+		UPMCAN_Pistol_SetOLoop_Duty(0,MOTOR_CCW);
+	}
 }
 
 void UPMCAN_RunMotor(void)
@@ -603,7 +639,7 @@ void UPMCAN_RunMotor(void)
 //	}
 	
 // Mass Shifter	
-	if(Flag.Mass_Position)
+	if(Flag.Mass_Position && !Flag.Mass_Stop)
 	{
 		if(UPWM_Position_Mass >= Mass_Actual_Position + 1 && GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_5) == 0 && !Flag.Mass_H && !Flag.Mass_T)
 		{
@@ -626,6 +662,11 @@ void UPMCAN_RunMotor(void)
 	{
 		UPMCAN_Mass_SetOLoop_Duty(0,MOTOR_CCW);
 		Flag.Mass_Run_CCW = false;
+	}
+	if(Flag.Mass_Stop)
+	{
+		UPMCAN_Mass_SetOLoop_Duty(0,MOTOR_CW);
+		Flag.Mass_Stop = false;
 	}
 	if((Flag.Mass_T && GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4) == 0) || (Flag.Mass_H && GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_5) == 0))
 	{
@@ -695,7 +736,7 @@ void UPMCAN_RunMotor(void)
 //		Flag.End_Frame_ARM2 = false;
 //		Flag.End_Frame_Jetson = false;
 //	}
-	if(Flag.Send_Data && Flag.End_Frame_Jetson)
+	if(Flag.Send_Data && Flag.End_Frame_ARM2)
 	{
 		USYSCAN_Send_Data();
 		Flag.End_Frame_ARM2 = false;

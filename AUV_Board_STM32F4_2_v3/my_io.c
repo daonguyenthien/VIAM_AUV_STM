@@ -47,7 +47,7 @@
 			#define 	UIO_LEAK1_EXTI_SOURCE			EXTI_PortSourceGPIOE
 			#define		UIO_LEAK1_EXTI_PORT				EXTI_PinSource11
 			#define		UIO_LEAK1_EXTI_Line				EXTI_Line11
-			#define		UIO_LEAK1_EXTI_Trigger		EXTI_Trigger_Falling	
+			#define		UIO_LEAK1_EXTI_Trigger		EXTI_Trigger_Rising	
 			//Interrupt
 			#define		UIO_LEAK1_IRQn						EXTI15_10_IRQn
 			
@@ -60,7 +60,7 @@
 			#define 	UIO_LEAK2_EXTI_SOURCE			EXTI_PortSourceGPIOE
 			#define		UIO_LEAK2_EXTI_PORT				EXTI_PinSource12
 			#define		UIO_LEAK2_EXTI_Line				EXTI_Line12
-			#define		UIO_LEAK2_EXTI_Trigger		EXTI_Trigger_Falling	
+			#define		UIO_LEAK2_EXTI_Trigger		EXTI_Trigger_Rising	
 			//Interrupt
 			#define		UIO_LEAK2_IRQn						EXTI15_10_IRQn
 			
@@ -73,7 +73,7 @@
 			#define 	UIO_LEAK3_EXTI_SOURCE			EXTI_PortSourceGPIOE
 			#define		UIO_LEAK3_EXTI_PORT				EXTI_PinSource13
 			#define		UIO_LEAK3_EXTI_Line				EXTI_Line13
-			#define		UIO_LEAK3_EXTI_Trigger		EXTI_Trigger_Falling	
+			#define		UIO_LEAK3_EXTI_Trigger		EXTI_Trigger_Rising	
 			//Interrupt
 			#define		UIO_LEAK3_IRQn						EXTI15_10_IRQn
 			
@@ -86,7 +86,7 @@
 			#define 	UIO_LEAK4_EXTI_SOURCE			EXTI_PortSourceGPIOE
 			#define		UIO_LEAK4_EXTI_PORT				EXTI_PinSource14
 			#define		UIO_LEAK4_EXTI_Line				EXTI_Line14
-			#define		UIO_LEAK4_EXTI_Trigger		EXTI_Trigger_Falling	
+			#define		UIO_LEAK4_EXTI_Trigger		EXTI_Trigger_Rising	
 			//Interrupt
 			#define		UIO_LEAK4_IRQn						EXTI15_10_IRQn
 			
@@ -99,7 +99,7 @@
 			#define 	UIO_LEAK5_EXTI_SOURCE			EXTI_PortSourceGPIOE
 			#define		UIO_LEAK5_EXTI_PORT				EXTI_PinSource15
 			#define		UIO_LEAK5_EXTI_Line				EXTI_Line15
-			#define		UIO_LEAK5_EXTI_Trigger		EXTI_Trigger_Falling	
+			#define		UIO_LEAK5_EXTI_Trigger		EXTI_Trigger_Rising	
 			//Interrupt
 			#define		UIO_LEAK5_IRQn						EXTI15_10_IRQn
 			#define 	UIO_EXTI15_10_IRQHandler			EXTI15_10_IRQHandler

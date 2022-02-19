@@ -5,9 +5,7 @@
  *      Author: Chau Thanh Hai
  */
 #include "my_can.h"
-#include "UGV_UART_JOYSTICK.h"
-#include "UGV_SBUS.h"
-#include "my_delay.h"
+
 /**
  * @defgroup Module Pin define
  * @{
@@ -38,15 +36,6 @@
 			/** 
 			* @brief   Timer Module define 
 			*/
-			#define 	UCAN_TIM  				      				TIM5
-			#define 	UCAN_TIM_CLK					 	 				RCC_APB1Periph_TIM5	
-			#define 	UCAN_TIM_CLK_Cmd    						RCC_APB1PeriphClockCmd
-			#define 	UCAN_TIM_IRQn    								TIM5_IRQn				
-			#define		UCAN_TIM_PreemptionPriority			0x01
-			#define		UCAN_TIM_SubPriority						0x05		
-			
-			#define 	UCAN_TIM_IRQHandler							TIM5_IRQHandler	
-			
 			#define 	UCAN_TIM_2  				      			TIM3
 			#define 	UCAN_TIM_CLK_2				 	 				RCC_APB1Periph_TIM3
 			#define 	UCAN_TIM_CLK_Cmd_2   						RCC_APB1PeriphClockCmd
@@ -79,11 +68,13 @@ static int _IDCANBUS_PISTOL = 0x124;
 static int _IDCANBUS_MASS_SHIFTER = 0x125;
 static int _IDCANBUS_EPC = 0x126;
 
+static int _MASKCANBUS_ARM_2 = 0xFE;
+
 uint8_t CAN_RxMessage[8];
 uint8_t CAN_TxMessage[8];
-float a = 0;
+uint8_t _send_status = 0;
 
-static union CAN_UpdateData
+union CAN_UpdateData
 {
 	float Value;
 	
@@ -94,7 +85,7 @@ static union CAN_UpdateData
 		unsigned a3:8;
 		unsigned a4:8;
 	} byte;
-} UPWM_DutyCycle, MX28_Data, KELLER_Pressure, KELLER_Temperature;
+} UPWM_DutyCycle, MX28_Data, KELLER_Pressure, KELLER_Temperature, Thruster_Speed;
 
 CanRxMsg RxMessage;
 
@@ -153,12 +144,12 @@ void UCAN_Configure(void)
 
 	/* CAN filter init */
 	CAN_FilterInitStruct.CAN_FilterNumber = 0;
-	CAN_FilterInitStruct.CAN_FilterMode = CAN_FilterMode_IdList;
+	CAN_FilterInitStruct.CAN_FilterMode = CAN_FilterMode_IdMask;
 	CAN_FilterInitStruct.CAN_FilterScale = CAN_FilterScale_16bit;
 	CAN_FilterInitStruct.CAN_FilterIdHigh = _IDCANBUS_ARM_2 << 5;
 	CAN_FilterInitStruct.CAN_FilterIdLow = _IDCANBUS_ARM_2 << 5;
-	CAN_FilterInitStruct.CAN_FilterMaskIdHigh = _IDCANBUS_ARM_2 << 5;
-	CAN_FilterInitStruct.CAN_FilterMaskIdLow = _IDCANBUS_ARM_2 << 5;
+	CAN_FilterInitStruct.CAN_FilterMaskIdHigh = _MASKCANBUS_ARM_2 << 5;
+	CAN_FilterInitStruct.CAN_FilterMaskIdLow = _MASKCANBUS_ARM_2 << 5;
 	CAN_FilterInitStruct.CAN_FilterFIFOAssignment = 0;
 	CAN_FilterInitStruct.CAN_FilterActivation = ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStruct);
@@ -240,8 +231,6 @@ float UCAN_Convert_Bytes_to_Float(uint8_t* _data_in)
 	return _part._value; 
 }
 
-
-
 void UCAN_Convert_Float_to_Bytes(float _data_in, uint8_t* _data_out)
 {
 	union
@@ -291,6 +280,20 @@ uint8_t UCAN_Checksum(uint8_t *_data)
 	return (uint8_t)value;
 }
 
+void Open_Thruster(void)
+{
+	CAN_TxMessage[0] = 'C';
+	CAN_TxMessage[1] = 'A';
+	CAN_TxMessage[2] = 'N';
+	CAN_TxMessage[3] = 'O';
+	CAN_TxMessage[4] = 0;
+	CAN_TxMessage[5] = 0;
+	CAN_TxMessage[6] = 0;
+	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);
+	
+	UCAN_Transmit(_IDCANBUS_THRUSTER, 8, CAN_TxMessage);
+}
+
 void Close_Thruster(void)
 {
 	CAN_TxMessage[0] = 'C';
@@ -319,6 +322,20 @@ void Run_Thruster(float speed_percent)
 		CAN_TxMessage[2] = 'L';	//rotate Left
 		UPWM_DutyCycle.Value = -speed_percent;
 	}
+	CAN_TxMessage[3] = UPWM_DutyCycle.byte.a4;
+	CAN_TxMessage[4] = UPWM_DutyCycle.byte.a3;
+	CAN_TxMessage[5] = UPWM_DutyCycle.byte.a2;
+	CAN_TxMessage[6] = UPWM_DutyCycle.byte.a1;
+	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);
+	UCAN_Transmit(_IDCANBUS_THRUSTER, 8, CAN_TxMessage);
+}
+
+void Run_Thruster_PID(float speed)
+{
+	UPWM_DutyCycle.Value = speed;
+	CAN_TxMessage[0] = 'C';
+	CAN_TxMessage[1] = 'P';
+	CAN_TxMessage[2] = 'R';
 	CAN_TxMessage[3] = UPWM_DutyCycle.byte.a4;
 	CAN_TxMessage[4] = UPWM_DutyCycle.byte.a3;
 	CAN_TxMessage[5] = UPWM_DutyCycle.byte.a2;
@@ -391,54 +408,110 @@ void Run_Mass(float speed_percent)
 	UCAN_Transmit(_IDCANBUS_ARM_1, 8, CAN_TxMessage);
 }
 
-void UCAN_Send_Data(void)
+void Stop_Mass(void)
 {
-	//Leak sensor
-	CAN_TxMessage[0] = LEAK_POSITION_1;
-	CAN_TxMessage[1] = LEAK_POSITION_2;
-	CAN_TxMessage[2] = LEAK_POSITION_3;
-	CAN_TxMessage[3] = LEAK_POSITION_4;
-	CAN_TxMessage[4] = LEAK_POSITION_5;
+	CAN_TxMessage[0] = 'O';
+	CAN_TxMessage[1] = 'S';
+	CAN_TxMessage[2] = 'M';
+	CAN_TxMessage[3] = 0;
+	CAN_TxMessage[4] = 0;
 	CAN_TxMessage[5] = 0;
 	CAN_TxMessage[6] = 0;
-	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
-	UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
-	
-	//MX28 Position
-	MX28_Data.Value = MX28_Status.Position;
-	CAN_TxMessage[0] = 'P';
-	CAN_TxMessage[1] = 'R';
-	CAN_TxMessage[2] = 0;
-	CAN_TxMessage[3] = MX28_Data.byte.a4;
-	CAN_TxMessage[4] = MX28_Data.byte.a3;
-	CAN_TxMessage[5] = MX28_Data.byte.a2;
-	CAN_TxMessage[6] = MX28_Data.byte.a1;
-	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
-	UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
-	
-//	//KELLER Pressure
-//	KELLER_Pressure.Value = UKellerPA3_Status.Pressure;
-//	CAN_TxMessage[0] = 'P';
-//	CAN_TxMessage[1] = 'K';
-//	CAN_TxMessage[2] = 0;
-//	CAN_TxMessage[3] = KELLER_Pressure.byte.a4;
-//	CAN_TxMessage[4] = KELLER_Pressure.byte.a3;
-//	CAN_TxMessage[5] = KELLER_Pressure.byte.a2;
-//	CAN_TxMessage[6] = KELLER_Pressure.byte.a1;
-//	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
-//	UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
-//	
-//	//KELLER Temperature
-//	KELLER_Temperature.Value = UKellerPA3_Status.Temperature;
-//	CAN_TxMessage[0] = 'T';
-//	CAN_TxMessage[1] = 'K';
-//	CAN_TxMessage[2] = 0;
-//	CAN_TxMessage[3] = KELLER_Temperature.byte.a4;
-//	CAN_TxMessage[4] = KELLER_Temperature.byte.a3;
-//	CAN_TxMessage[5] = KELLER_Temperature.byte.a2;
-//	CAN_TxMessage[6] = KELLER_Temperature.byte.a1;
-//	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
-//	UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
+	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);
+	UCAN_Transmit(_IDCANBUS_ARM_1, 8, CAN_TxMessage);
+}
+
+void UCAN_Send_Mass_Speed(float speed)
+{
+	UPWM_DutyCycle.Value = speed;
+	CAN_TxMessage[0] = 'O';
+	CAN_TxMessage[1] = 'M';
+	CAN_TxMessage[2] = 'S';
+	CAN_TxMessage[3] = UPWM_DutyCycle.byte.a4;
+	CAN_TxMessage[4] = UPWM_DutyCycle.byte.a3;
+	CAN_TxMessage[5] = UPWM_DutyCycle.byte.a2;
+	CAN_TxMessage[6] = UPWM_DutyCycle.byte.a1;
+	CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);
+	UCAN_Transmit(_IDCANBUS_ARM_1, 8, CAN_TxMessage);
+}
+
+void UCAN_Send_Data(void)
+{
+	switch(_send_status)
+	{
+		case 0:
+			//Leak sensor
+			CAN_TxMessage[0] = LEAK_POSITION_1;
+			CAN_TxMessage[1] = LEAK_POSITION_2;
+			CAN_TxMessage[2] = LEAK_POSITION_3;
+			CAN_TxMessage[3] = LEAK_POSITION_4;
+			CAN_TxMessage[4] = LEAK_POSITION_5;
+			CAN_TxMessage[5] = 0;
+			CAN_TxMessage[6] = 0;
+			CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
+			UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
+			_send_status ++;
+		break;
+		
+		case 1:
+			//MX28 Position
+			MX28_Data.Value = MX28_Status.Position;
+			CAN_TxMessage[0] = 'P';
+			CAN_TxMessage[1] = 'R';
+			CAN_TxMessage[2] = 0;
+			CAN_TxMessage[3] = MX28_Data.byte.a4;
+			CAN_TxMessage[4] = MX28_Data.byte.a3;
+			CAN_TxMessage[5] = MX28_Data.byte.a2;
+			CAN_TxMessage[6] = MX28_Data.byte.a1;
+			CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
+			UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
+			_send_status ++;
+		break;
+		
+		case 2:
+			//KELLER Pressure
+			KELLER_Pressure.Value = UKellerPA3_Status.Pressure;
+			CAN_TxMessage[0] = 'P';
+			CAN_TxMessage[1] = 'K';
+			CAN_TxMessage[2] = 0;
+			CAN_TxMessage[3] = KELLER_Pressure.byte.a4;
+			CAN_TxMessage[4] = KELLER_Pressure.byte.a3;
+			CAN_TxMessage[5] = KELLER_Pressure.byte.a2;
+			CAN_TxMessage[6] = KELLER_Pressure.byte.a1;
+			CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
+			UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
+			_send_status ++;
+		break;
+		
+		case 3:
+			//KELLER Temperature
+			KELLER_Temperature.Value = UKellerPA3_Status.Temperature;
+			CAN_TxMessage[0] = 'T';
+			CAN_TxMessage[1] = 'K';
+			CAN_TxMessage[2] = 0;
+			CAN_TxMessage[3] = KELLER_Temperature.byte.a4;
+			CAN_TxMessage[4] = KELLER_Temperature.byte.a3;
+			CAN_TxMessage[5] = KELLER_Temperature.byte.a2;
+			CAN_TxMessage[6] = KELLER_Temperature.byte.a1;
+			CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
+			UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
+			_send_status ++;
+		break;
+		
+		case 4:
+			//Thruster Speed
+			CAN_TxMessage[0] = 'R';
+			CAN_TxMessage[1] = 'P';
+			CAN_TxMessage[2] = 'V';
+			CAN_TxMessage[3] = Thruster_Speed.byte.a4;
+			CAN_TxMessage[4] = Thruster_Speed.byte.a3;
+			CAN_TxMessage[5] = Thruster_Speed.byte.a2;
+			CAN_TxMessage[6] = Thruster_Speed.byte.a1;
+			CAN_TxMessage[7] = UCAN_Checksum(CAN_TxMessage);	
+			UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
+			_send_status = 0;
+		break;
+	}
 }
 
 void UCAN_Send_End_Frame_ARM2(void)
@@ -455,12 +528,15 @@ void UCAN_Send_End_Frame_ARM2(void)
 	UCAN_Transmit(_IDCANBUS_ARM_1, 8, CAN_TxMessage);
 }
 
+//tat gui lien tuc thruster ?
+//tat ngat cua nhung cai khac
+//thoi gian truyen nhan cua cac cam bien
 void UCAN_Run_Motor(void)
 {
 //THRUSTER
 	if(scalechannels[2] != old_scalechannels[2])
 	{
-		if(abs(scalechannels[2]) > 10 && abs(scalechannels[2]) < Thruster_power + 5)
+		if(abs(scalechannels[2]) > 10)
 		{
 			Run_Thruster((float)scalechannels[2]);
 		}
@@ -620,19 +696,19 @@ void UCAN_HeartBeat(void)
 	UCAN_Transmit(_IDCANBUS_ARM_2, 8, CAN_TxMessage);
 }
 
-void UCAN_StartSendHeartBeat(FunctionalState NewState)
-{
-	if(NewState == ENABLE)
-	{
-		TIM_ITConfig(UCAN_TIM, TIM_IT_Update, ENABLE);
-		TIM_Cmd(UCAN_TIM, ENABLE);
-	}
-	else
-	{
-		TIM_ITConfig(UCAN_TIM, TIM_IT_Update, DISABLE);
-		TIM_Cmd(UCAN_TIM, DISABLE);
-	}
-}
+//void UCAN_StartSendHeartBeat(FunctionalState NewState)
+//{
+//	if(NewState == ENABLE)
+//	{
+//		TIM_ITConfig(UCAN_TIM, TIM_IT_Update, ENABLE);
+//		TIM_Cmd(UCAN_TIM, ENABLE);
+//	}
+//	else
+//	{
+//		TIM_ITConfig(UCAN_TIM, TIM_IT_Update, DISABLE);
+//		TIM_Cmd(UCAN_TIM, DISABLE);
+//	}
+//}
 
 bool UCAN_IsNeedCheckSystem(void)
 {
@@ -654,7 +730,7 @@ void UCAN_CAN_IRQHandler(void)
 	{
 		CAN_FIFORelease(UCAN_CAN,CAN_FIFO0);
 	}
-	if((RxMessage.StdId == _IDCANBUS_ARM_2)&&(RxMessage.IDE == CAN_ID_STD)&&(RxMessage.DLC == 8)&&(UCAN_Checksum(RxMessage.Data) == RxMessage.Data[7]))
+	if((RxMessage.StdId == _IDCANBUS_ARM_2 || RxMessage.StdId == _IDCANBUS_THRUSTER)&&(RxMessage.IDE == CAN_ID_STD)&&(RxMessage.DLC == 8)&&(UCAN_Checksum(RxMessage.Data) == RxMessage.Data[7]))
 	{
 		if((RxMessage.Data[0] == 'R') && (RxMessage.Data[1] == 'U') && (RxMessage.Data[2] == 'D'))
 		{
@@ -683,83 +759,24 @@ void UCAN_CAN_IRQHandler(void)
 		{
 			Flag.End_Frame_Jetson = true;
 		}
+		if((RxMessage.Data[0] == 'R')&&(RxMessage.Data[1] == 'P')&&(RxMessage.Data[2] == 'V'))
+		{
+			Thruster_Speed.byte.a1 = RxMessage.Data[3];
+			Thruster_Speed.byte.a2 = RxMessage.Data[4];
+			Thruster_Speed.byte.a3 = RxMessage.Data[5];
+			Thruster_Speed.byte.a4 = RxMessage.Data[6];
+		}
 	}
-//	if((RxMessage.StdId == _IDCANBUS_ARM_2)&&(RxMessage.IDE == CAN_ID_STD)&&(RxMessage.DLC == 8)&&(UCAN_Checksum(RxMessage.Data) == RxMessage.Data[7]))
-//	{
-//		
-//		if((RxMessage.Data[0] == 'A') && (RxMessage.Data[1] == 'R') 
-//				&& (RxMessage.Data[2] == 'M') && (RxMessage.Data[3] == '2')
-//				&& (RxMessage.Data[4] == 'C') && (RxMessage.Data[5] == 'H')
-//				&& (RxMessage.Data[6] == 'E'))
-//		{
-//			_need_system_ready = true;
-//		}
-//		
-//		switch(RxMessage.Data[1])
-//		{
-//			case READ_DATA:
-//			{
-//				if((RxMessage.Data[0] == ARM2_ALL_DATA) && (RxMessage.Data[6] == 0x0A))
-//				{
-//					_can_respond_count++;
-//				}
-//				break;
-//			}
-//			case WRITE_DATA:
-//			{
-//				switch(RxMessage.Data[0])
-//				{					
-////					case ARM2_POWER_INT:
-////					{
-////						if(RxMessage.Data[2] == INT_24V40AH)
-////						{
-////							UIO_Emergency24V40Ah(ENABLE);
-////						}
-////						break;
-////					}
-//					case ARM2_RUDDER:
-//					{
-//						if(RxMessage.Data[2] == MX28_GOAL_POSITION)
-//						{
-//							uint16_t tmp = (uint16_t)UCAN_Convert_Byte2Uint16(RxMessage.Data + 3);
-//							UMX28_setGoalPosition(1, tmp);
-//						}
-//						if(RxMessage.Data[2] == MX28_MOVING_SPEED)
-//						{
-//							UMX28_setMovingSpeed(1, (uint16_t)UCAN_Convert_Byte2Uint16(RxMessage.Data + 3));
-//						}
-//						if(RxMessage.Data[2] == MX28_KP)
-//						{
-//							UMX28_setKp(1, RxMessage.Data[3]);
-//						}
-//						if(RxMessage.Data[2] == MX28_KI)
-//						{
-//							UMX28_setKi(1, RxMessage.Data[3]);
-//						}
-//						if(RxMessage.Data[2] == MX28_KD)
-//						{
-//							UMX28_setKd(1, RxMessage.Data[3]);
-//						}
-//						break;
-//					}
-//					defaut:
-//						break;
-//				}
-//			}				
-//			default:
-//				break;
-//		}
-//	}
 }	
 
-void UCAN_TIM_IRQHandler(void)
-{
-	if(TIM_GetITStatus(UCAN_TIM, TIM_IT_Update) != RESET)
-	{
-		UCAN_HeartBeat();
-		TIM_ClearITPendingBit(UCAN_TIM, TIM_IT_Update);
-	}
-}
+//void UCAN_TIM_IRQHandler(void)
+//{
+//	if(TIM_GetITStatus(UCAN_TIM, TIM_IT_Update) != RESET)
+//	{
+//		UCAN_HeartBeat();
+//		TIM_ClearITPendingBit(UCAN_TIM, TIM_IT_Update);
+//	}
+//}
 
 void UCAN_TIM_IRQHandler_2(void)
 {
@@ -769,57 +786,42 @@ void UCAN_TIM_IRQHandler_2(void)
 			switch(scalechannels[7])
 			{
 				case 0:
-					if(Flag.Joystick_Enable && !Flag.Joystick_Disable)
-					{
-						UCAN_Run_Motor();
-						if(Flag.Devo7_Off)
-						{
-							Run_Thruster(0);
-							Run_Pistol(0);
-							UMX28_setGoalPosition(254,Rudder_position_mid);
-							Flag.Joystick_Enable = false;
-							Flag.Joystick_Disable = true;
-							Flag.Devo7_Off = false;
-						}
-					}
 					if(Flag.Joystick_Disable && !Flag.Joystick_Enable)
 					{
 						UMX28_setMovingSpeed(254,0);
 						UMX28_setGoalPosition(254, Rudder_Angle);
-//						Flag.Devo7_Off = false;
+					}
+					label:
+					if(Flag.Joystick_Enable && !Flag.Joystick_Disable)
+					{
+						if(Flag.Run_First_Time_After_Devo7_Off)
+						{
+							Run_Thruster(0);
+							Run_Pistol(0);
+							Stop_Mass();
+							UMX28_setGoalPosition(254,Rudder_position_mid);
+
+							Flag.Run_First_Time_After_Devo7_Off = false;
+							Flag.Joystick_Enable = false;
+							Flag.Joystick_Disable = true;
+							break;
+						}
+						UCAN_Run_Motor();
 					}
 				break;
 				case 1:
-//					Flag.Joystick_Enable = true;
-					UCAN_Run_Motor();
-					if(Flag.Devo7_Off)
-					{
-						scalechannels[7] = 0;
-						Run_Thruster(0);
-						Run_Pistol(0);
-						UMX28_setGoalPosition(254,Rudder_position_mid);
-						Flag.Joystick_Enable = false;
-						Flag.Joystick_Disable = true;
-						Flag.Devo7_Off = false;
-					}
+					Flag.Joystick_Enable = true;
+					Flag.Joystick_Disable = false;
+					goto label;
 				break;
 			}
 			if(Flag.Send_Data && Flag.End_Frame_Jetson)
 			{
 				UCAN_Send_Data();
 				Flag.End_Frame_Jetson = false;
-			}
-			if(Flag.Joystick_Enable)
-			{
 				UCAN_Send_End_Frame_ARM2();
 			}
-			
-//			if(scalechannels[7] == 0 && Flag.Joystick_Enable == false)
-//			{
-//					Run_Thruster(0);
-//					Run_Pistol(0);
-//					UMX28_setGoalPosition(254, (float)Rudder_position_mid);
-//			}
+			//Balance_Operation();
 		}
 		TIM_ClearITPendingBit(UCAN_TIM_2, TIM_IT_Update);
 }
